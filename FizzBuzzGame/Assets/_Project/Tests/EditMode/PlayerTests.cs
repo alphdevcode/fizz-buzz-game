@@ -10,12 +10,11 @@ public class PlayerTests
     [Test]
     public void Given_LookAtPointRight_Then_LookRight()
     {
-        var gameObject = new GameObject
+        var player = new GameObject
         {
             transform = { position = Vector3.zero }
-        };
-        
-        var player = gameObject.AddComponent<PlayerRotation>();
+        }
+            .AddComponent<Rotation>();
         player.LookAtOnlyInYAxis(new Vector3(1,0,0));
         
         Assert.AreEqual(new Vector3(0,90,0), player.transform.eulerAngles);
@@ -24,12 +23,26 @@ public class PlayerTests
     [Test]
     public void Given_LookAtPointDown_Then_LookDown()
     {
-        var gameObject = new GameObject
+        var player = new GameObject
         {
             transform = { position = Vector3.zero }
-        };
+        }
+            .AddComponent<Rotation>();
         
-        var player = gameObject.AddComponent<PlayerRotation>();
+        player.LookAtOnlyInYAxis(new Vector3(0,0,-1));
+        
+        Assert.AreEqual(new Vector3(0,180,0), player.transform.eulerAngles);
+    }
+    
+    [Test]
+    public void Given_WeaponShoot_Then_LookDown()
+    {
+        var player = new GameObject
+            {
+                transform = { position = Vector3.zero }
+            }
+            .AddComponent<Rotation>();
+        
         player.LookAtOnlyInYAxis(new Vector3(0,0,-1));
         
         Assert.AreEqual(new Vector3(0,180,0), player.transform.eulerAngles);

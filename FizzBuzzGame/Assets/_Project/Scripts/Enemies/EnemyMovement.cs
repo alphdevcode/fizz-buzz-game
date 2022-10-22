@@ -2,23 +2,23 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace _Project.Scripts.Enemies
+namespace AlphDevCode.Enemies
 {
     public class EnemyMovement : MonoBehaviour
     {
         private Transform _player;
-        private NavMeshAgent _navMeshAgent;
+        private NavMeshAgentMovement _navMeshAgentMovement;
 
         private void Awake()
         {
             _player = GameObject.FindWithTag("Player").transform;
-            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _navMeshAgentMovement = GetComponent<NavMeshAgentMovement>();
+
         }
 
         void Start()
         {
-            _navMeshAgent.SetDestination(_player.position);
-            
+            _navMeshAgentMovement.MoveTo(_player.position);
         }
     }
 }

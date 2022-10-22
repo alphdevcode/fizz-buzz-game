@@ -2,7 +2,7 @@
 
 namespace AlphDevCode.Player
 {
-    public class PlayerRotation : MonoBehaviour
+    public class Rotation : MonoBehaviour
     {
         public void LookAtOnlyInYAxis(Vector3 pointToLook)
         {

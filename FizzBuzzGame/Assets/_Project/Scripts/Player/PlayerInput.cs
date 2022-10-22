@@ -5,11 +5,11 @@ namespace AlphDevCode.Player
 {
     public class PlayerInput : MonoBehaviour
     {
-        private PlayerRotation _playerRotation;
+        private Rotation _rotation;
 
         private void Awake()
         {
-            _playerRotation = GetComponent<PlayerRotation>();
+            _rotation = GetComponent<Rotation>();
         }
 
         private void Update()
@@ -20,7 +20,7 @@ namespace AlphDevCode.Player
             {
                 var pointToLook = floorHit.point;
 
-                _playerRotation.LookAtOnlyInYAxis(pointToLook);
+                _rotation.LookAtOnlyInYAxis(pointToLook);
             }
         }
     }
