@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DumbWeapon
   m_EditorClassIdentifier: 
   enemyType: 0
-  shootingInterval: 0.5
+  shootingInterval: 0.2
   weaponMesh: {fileID: 0}
   projectileMesh: {fileID: 0}

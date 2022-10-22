@@ -2,12 +2,11 @@
 
 namespace AlphDevCode.Tools
 {
-    public class MovementRb
+    public class Movement
     {
-        public void MoveForwardRb(GameObject gameObject, Vector3 direction, float force)
+        public void Move(Transform transform, Vector3 direction, float speed)
         {
-            var rb = gameObject.GetComponent<Rigidbody>();
-            rb.AddForce(direction * force, ForceMode.Impulse);
+            transform.position += direction * speed * Time.deltaTime;
         }
     }
 }

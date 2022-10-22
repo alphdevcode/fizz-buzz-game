@@ -7,20 +7,22 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TestTools;
 
-public class MovementRbTests
+public class MovementTests
 {
     [UnityTest]
     public IEnumerator Given_ForwardDirection_Then_ObjectMoveForward()
     {
         var movement = new Movement();
-        var gameObject = new GameObject();
-        movement.Move(gameObject, Vector3.forward, 100f);
+        var objectTransform = new GameObject().transform;
 
-        var startPosition = gameObject.transform.position;
+        var startPosition = objectTransform.position;
 
-        yield return new WaitForSeconds(.1f);
+        movement.Move(objectTransform, Vector3.forward, 100f);
+        yield return null;
 
-        var direction = (gameObject.transform.position - startPosition).normalized;
+        var direction = (objectTransform.position - startPosition).normalized;
+        
+        Debug.Log($"Start: {startPosition}. End: {objectTransform.position}. Dir: {direction}");
         
         Assert.AreEqual(Vector3.forward,direction);
     }

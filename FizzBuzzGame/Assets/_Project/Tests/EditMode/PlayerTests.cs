@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AlphDevCode.Player;
+using AlphDevCode.Tools;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -34,18 +35,4 @@ public class PlayerTests
         Assert.AreEqual(new Vector3(0,180,0), player.transform.eulerAngles);
     }
     
-    [Test]
-    public void Given_WeaponShoot_Then_LookDown()
-    {
-        var player = new GameObject
-            {
-                transform = { position = Vector3.zero }
-            }
-            .AddComponent<Rotation>();
-        
-        player.LookAtOnlyInYAxis(new Vector3(0,0,-1));
-        
-        Assert.AreEqual(new Vector3(0,180,0), player.transform.eulerAngles);
     }
-    
-}

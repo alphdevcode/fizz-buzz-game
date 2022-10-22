@@ -2,6 +2,9 @@
 {
     public enum EnemyType
     {
-        
+        DUMB,
+        FIZZ,
+        BUZZ,
+        FIZZBUZZ
     }
 }
