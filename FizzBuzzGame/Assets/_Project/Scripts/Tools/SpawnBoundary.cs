@@ -4,8 +4,8 @@ namespace AlphDevCode.Tools
 {
     public class SpawnBoundary
     {
-        public const float ZScreenEdge = 10f;
-        public const float XScreenEdge = 17f;
+        private const float ZScreenEdge = 10f;
+        private const float XScreenEdge = 17f;
         private const float SafeDistance = 5f;
         private const float OffScreenDistance = 5f;
 

@@ -1,25 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using AlphDevCode.Enemies;
-using AlphDevCode.Player;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.TestTools;
 
-public class EnemyTests
+namespace AlphDevCode.Test.EditMode
 {
-    [Test]
-    public void Given_TakeDamage_Then_Die()
+    public class EnemyTests
     {
-        var gameObject = new GameObject
+        [Test]
+        public void Given_TakeDamage_Then_Die()
         {
-            transform = { position = Vector3.zero }
-        };
-        var enemy = gameObject.AddComponent<EnemyHealth>();
-        
-        enemy.TakeDamage();
+            var gameObject = new GameObject
+            {
+                transform = { position = Vector3.zero }
+            };
+            var enemy = gameObject.AddComponent<EnemyHealth>();
 
-        Assert.IsFalse(enemy.GetComponent<BoxCollider>().enabled);
+            enemy.TakeDamage();
+
+            Assert.IsFalse(enemy.GetComponent<BoxCollider>().enabled);
+        }
     }
 }

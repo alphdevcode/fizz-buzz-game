@@ -1,29 +1,29 @@
 using System.Collections;
-using AlphDevCode.Enemies;
-using AlphDevCode.Player;
 using AlphDevCode.Tools;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.TestTools;
 
-public class MovementTests
+namespace AlphDevCode.Test.PlayMode
 {
-    [UnityTest]
-    public IEnumerator Given_ForwardDirection_Then_ObjectMoveForward()
+    public class MovementTests
     {
-        var movement = new Movement();
-        var objectTransform = new GameObject().transform;
+        [UnityTest]
+        public IEnumerator Given_ForwardDirection_Then_ObjectMoveForward()
+        {
+            var movement = new Movement();
+            var objectTransform = new GameObject().transform;
 
-        var initialPosition = objectTransform.position;
+            var initialPosition = objectTransform.position;
 
-        movement.Move(objectTransform, Vector3.forward, 100f);
-        yield return null;
+            movement.Move(objectTransform, Vector3.forward, 100f);
+            yield return null;
 
-        var direction = (objectTransform.position - initialPosition).normalized;
-        
-        // Debug.Log($"Start: {initialPosition}. End: {objectTransform.position}. Dir: {direction}");
-        
-        Assert.AreEqual(Vector3.forward,direction);
+            var direction = (objectTransform.position - initialPosition).normalized;
+
+            // Debug.Log($"Start: {initialPosition}. End: {objectTransform.position}. Dir: {direction}");
+
+            Assert.AreEqual(Vector3.forward, direction);
+        }
     }
 }

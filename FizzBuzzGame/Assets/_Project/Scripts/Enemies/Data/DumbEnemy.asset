@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91379f1ede114c7684dd4f91c4708c29, type: 3}
-  m_Name: DumbWeapon
+  m_Script: {fileID: 11500000, guid: 296e7c79280b437697ce57b41825ba06, type: 3}
+  m_Name: DumbEnemy
   m_EditorClassIdentifier: 
-  targetEnemyType: {fileID: 11400000, guid: 34d438021bb1f8d42b79519b13f604d6, type: 2}
-  shootingInterval: 0.2
-  weaponMesh: {fileID: 0}
-  projectileMesh: {fileID: 0}
+  movementSpeed: 1
