@@ -22,7 +22,7 @@ public class MovementTests
 
         var direction = (objectTransform.position - initialPosition).normalized;
         
-        Debug.Log($"Start: {initialPosition}. End: {objectTransform.position}. Dir: {direction}");
+        // Debug.Log($"Start: {initialPosition}. End: {objectTransform.position}. Dir: {direction}");
         
         Assert.AreEqual(Vector3.forward,direction);
     }
