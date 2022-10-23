@@ -1,4 +1,6 @@
 ﻿using System;
+using AlphDevCode.Enemies;
+using AlphDevCode.Interfaces;
 using AlphDevCode.Tools;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -40,7 +42,15 @@ namespace AlphDevCode.Weapons
 
         private void OnBecameInvisible()
         {
+            if(gameObject.activeInHierarchy)
+                _bulletPool.Release(this);
+        }
+
+        private void OnTriggerEnter(Collider hitCollider)
+        {
+            hitCollider.gameObject.GetComponent<IDamageable>().TakeDamage();
             _bulletPool.Release(this);
         }
+
     }
 }

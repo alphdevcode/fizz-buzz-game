@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using AlphDevCode.Tools;
 using UnityEngine;
 
 namespace AlphDevCode.Enemies
@@ -13,12 +14,18 @@ namespace AlphDevCode.Enemies
             _transform = transform;
         }
 
-        public IEnumerator SinkDown(float sinkSpeed, float distanceToSink)
+        public IEnumerator SinkDown(float sinkSpeed, float distanceToSink, Action callback = null)
         {
-            _transform.Translate(Vector3.down * sinkSpeed * Time.deltaTime);
+            var initialPosition = _transform.position.y;
+            var movement = new Movement();
             
-            if (Math.Abs(_transform.position.y - (-distanceToSink)) < float.Epsilon)
+            while (Mathf.Abs(_transform.position.y - initialPosition) < distanceToSink)
+            {
+                movement.Move(_transform, Vector3.down, sinkSpeed);
                 yield return null;
+            }
+                
+            callback?.Invoke();
         }
     }
 }

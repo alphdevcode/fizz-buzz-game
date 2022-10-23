@@ -15,14 +15,14 @@ public class MovementTests
         var movement = new Movement();
         var objectTransform = new GameObject().transform;
 
-        var startPosition = objectTransform.position;
+        var initialPosition = objectTransform.position;
 
         movement.Move(objectTransform, Vector3.forward, 100f);
         yield return null;
 
-        var direction = (objectTransform.position - startPosition).normalized;
+        var direction = (objectTransform.position - initialPosition).normalized;
         
-        Debug.Log($"Start: {startPosition}. End: {objectTransform.position}. Dir: {direction}");
+        Debug.Log($"Start: {initialPosition}. End: {objectTransform.position}. Dir: {direction}");
         
         Assert.AreEqual(Vector3.forward,direction);
     }

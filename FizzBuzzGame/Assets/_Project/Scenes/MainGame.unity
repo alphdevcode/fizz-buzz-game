@@ -569,8 +569,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDumb
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1803480556, guid: f9a156222bdf2cc40be1d55e9984cc1d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a156222bdf2cc40be1d55e9984cc1d, type: 3}
 --- !u!1001 &4726777068818382159
 PrefabInstance:

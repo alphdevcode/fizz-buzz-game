@@ -4,6 +4,7 @@ using AlphDevCode.Enemies;
 using AlphDevCode.Player;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.TestTools;
 
 public class EnemyTests
@@ -15,7 +16,6 @@ public class EnemyTests
         {
             transform = { position = Vector3.zero }
         };
-        gameObject.AddComponent<BoxCollider>();
         var enemy = gameObject.AddComponent<EnemyHealth>();
         
         enemy.TakeDamage();
