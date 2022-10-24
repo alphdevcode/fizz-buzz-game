@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 namespace AlphDevCode.Enemies
 {
+    [RequireComponent(typeof(NavMeshAgentMovement))]
     public class EnemyMovement : MonoBehaviour
     {
         private Transform _player;
@@ -13,12 +14,16 @@ namespace AlphDevCode.Enemies
         {
             _player = GameObject.FindWithTag("Player").transform;
             _navMeshAgentMovement = GetComponent<NavMeshAgentMovement>();
-
         }
 
         void Start()
         {
-            _navMeshAgentMovement.MoveTo(_player.position);
+            // _navMeshAgentMovement.MoveTo(_player.position);
+        }
+
+        private void OnEnable()
+        {
+            // _navMeshAgentMovement.MoveTo(_player.position);
         }
     }
 }

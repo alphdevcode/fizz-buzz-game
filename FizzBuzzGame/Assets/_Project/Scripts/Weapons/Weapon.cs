@@ -39,10 +39,10 @@ namespace AlphDevCode.Weapons
 
         private void OnGetBullet(Bullet bullet)
         {
-            bullet.gameObject.SetActive(true);
             bullet.transform.position = firePoint.position;
             bullet.SetSpeed(20f);
             bullet.SetDirection(firePoint.forward);
+            bullet.gameObject.SetActive(true);
         }
 
         private void OnReleaseBullet(Bullet bullet)

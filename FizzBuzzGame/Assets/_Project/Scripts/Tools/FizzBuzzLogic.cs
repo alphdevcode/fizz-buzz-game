@@ -1,3 +1,6 @@
+using PlasticPipe.PlasticProtocol.Messages;
+using UnityEngine;
+
 namespace AlphDevCode.Tools
 {
     public class FizzBuzzLogic
@@ -6,7 +9,14 @@ namespace AlphDevCode.Tools
         public const string FizzName = "FIZZ";
         public const string BuzzName = "BUZZ";
         public const string DumbName = "DUMB";
-        
+
+        private const int LowerNumber = 1;
+        private const int HigherNumber = 61;
+
+        public int GetRandomNumber()
+        {
+            return Random.Range(LowerNumber, HigherNumber);
+        }
         
         public string EvaluateNumber(int number)
         {

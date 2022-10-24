@@ -29,7 +29,7 @@ namespace AlphDevCode.Weapons
             _direction = direction;
         }
 
-        
+
         private void Start()
         {
             _movement = new Movement();
@@ -42,15 +42,17 @@ namespace AlphDevCode.Weapons
 
         private void OnBecameInvisible()
         {
-            if(gameObject.activeInHierarchy)
+            if (gameObject.activeInHierarchy)
                 _bulletPool.Release(this);
         }
 
         private void OnTriggerEnter(Collider hitCollider)
         {
-            hitCollider.gameObject.GetComponent<IDamageable>().TakeDamage();
+            if (hitCollider.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage();
+            }
             _bulletPool.Release(this);
         }
-
     }
 }

@@ -18,5 +18,29 @@ namespace AlphDevCode.Test.EditMode
 
             Assert.AreEqual(expectedResult, spawnBoundary.CheckIfInsideSafeArea(new Vector2(x, y)));
         }
+
+        [Test]
+        public void Given_RandomPosition_Then_PointInSpawnArea()
+        {
+            int timesToRepeat = 1000;
+            var spawnBoundary = new SpawnBoundary();
+
+            bool isInsideXArea = false;
+            bool isInsideZArea = false;
+
+            while (timesToRepeat > 0)
+            {
+                var point = spawnBoundary.GetRandomSpawnPoint();
+
+                isInsideXArea = point.x is > -SpawnBoundary.XScreenEdge and < SpawnBoundary.XScreenEdge;
+                isInsideZArea = point.y is > -SpawnBoundary.ZScreenEdge and < SpawnBoundary.ZScreenEdge;
+
+                if(!isInsideXArea || !isInsideZArea) break;
+
+                timesToRepeat--;
+            }
+
+            Assert.IsTrue(isInsideXArea && isInsideZArea);
+        }
     }
 }

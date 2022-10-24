@@ -8,16 +8,23 @@ namespace AlphDevCode.Enemies
     [RequireComponent(typeof(NavMeshAgent))]
     public class NavMeshAgentMovement : MonoBehaviour
     {
+        private Transform _player;
         private NavMeshAgent _navMeshAgent;
-
-        private void Awake()
-        {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-        }
 
         public void MoveTo(Vector3 point)
         {
             _navMeshAgent.SetDestination(point);
+        }
+
+        private void Awake()
+        {
+            _player = GameObject.FindWithTag("Player").transform;
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        private void OnEnable()
+        {
+            // MoveTo(_player.position);
         }
     }
 }
