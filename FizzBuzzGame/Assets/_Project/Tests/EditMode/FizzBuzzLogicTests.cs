@@ -1,28 +1,27 @@
 using AlphDevCode.Tools;
 using NUnit.Framework;
-using UnityEngine;
 
-namespace AlphDevCode.Test.EditMode
+namespace Tests
 {
     public class FizzBuzzLogicTests
     {
-        [TestCase(2, FizzBuzzLogic.DumbName)]
-        [TestCase(13, FizzBuzzLogic.DumbName)]
-        [TestCase(59, FizzBuzzLogic.DumbName)]
-        [TestCase(3, FizzBuzzLogic.FizzName)]
-        [TestCase(12, FizzBuzzLogic.FizzName)]
-        [TestCase(27, FizzBuzzLogic.FizzName)]
-        [TestCase(5, FizzBuzzLogic.BuzzName)]
-        [TestCase(20, FizzBuzzLogic.BuzzName)]
-        [TestCase(50, FizzBuzzLogic.BuzzName)]
-        [TestCase(15, FizzBuzzLogic.FizzBuzzName)]
-        [TestCase(30, FizzBuzzLogic.FizzBuzzName)]
-        [TestCase(60, FizzBuzzLogic.FizzBuzzName)]
         [Test]
-        public void Given_Number_Then_CheckFizzBuzzType(int number, string expectedResult)
+        [TestCase(2, FizzBuzzLogicType.DUMB)]
+        [TestCase(13, FizzBuzzLogicType.DUMB)]
+        [TestCase(59, FizzBuzzLogicType.DUMB)]
+        [TestCase(3, FizzBuzzLogicType.FIZZ)]
+        [TestCase(12, FizzBuzzLogicType.FIZZ)]
+        [TestCase(27, FizzBuzzLogicType.FIZZ)]
+        [TestCase(5, FizzBuzzLogicType.BUZZ)]
+        [TestCase(20, FizzBuzzLogicType.BUZZ)]
+        [TestCase(50, FizzBuzzLogicType.BUZZ)]
+        [TestCase(15, FizzBuzzLogicType.FIZZBUZZ)]
+        [TestCase(30, FizzBuzzLogicType.FIZZBUZZ)]
+        [TestCase(60, FizzBuzzLogicType.FIZZBUZZ)]
+        public void Given_Number_Then_CheckFizzBuzzLogicType(int number, FizzBuzzLogicType expectedType)
         {
             var fizzBuzzLogic = new FizzBuzzLogic();
-            Assert.AreEqual(expectedResult, fizzBuzzLogic.EvaluateNumber(number));
+            Assert.AreEqual(expectedType, fizzBuzzLogic.EvaluateNumber(number));
         }
     }
 }

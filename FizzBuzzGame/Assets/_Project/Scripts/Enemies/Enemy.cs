@@ -36,11 +36,11 @@ namespace AlphDevCode.Enemies
                 GameObject.FindWithTag("Player").transform.position);
         }
 
-        public void SetEnemyType()
+        public void SetEnemyTypeData()
         {
             var fizzBuzzNumber = _fizzBuzzLogic.GetRandomNumber();
             var enemyTypeName = _fizzBuzzLogic.EvaluateNumber(fizzBuzzNumber);
-            this.enemyType = enemyTypeSelector.GetEnemyByTypeName(enemyTypeName);
+            this.enemyType = enemyTypeSelector.GetEnemyData(enemyTypeName);
 
             InitializeEnemyData(fizzBuzzNumber);
         }
@@ -48,13 +48,8 @@ namespace AlphDevCode.Enemies
         private void InitializeEnemyData(int fizzBuzzNumber)
         {
             navMeshAgent.speed = this.enemyType.movementSpeed;
-            meshRenderer.material.color = this.enemyType.enemyColor;
+            meshRenderer.material.color = this.enemyType.color;
             fizzBuzzNumberText.text = $"{fizzBuzzNumber}";
-        }
-
-        private void OnValidate()
-        {
-            gameObject.name = $"{this.enemyType.enemyName} Enemy";
         }
 
         public void ReleaseFromPool()

@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace AlphDevCode.Test.PlayMode
+namespace Tests
 {
     public class MovementTests
     {

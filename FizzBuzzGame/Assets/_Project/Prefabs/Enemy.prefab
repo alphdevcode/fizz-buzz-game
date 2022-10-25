@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 3673979335204281455}
   - component: {fileID: -8156424978186707255}
   m_Layer: 0
-  m_Name: DUMB Enemy
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

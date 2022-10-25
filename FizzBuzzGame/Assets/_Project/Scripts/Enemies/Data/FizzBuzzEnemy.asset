@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296e7c79280b437697ce57b41825ba06, type: 3}
   m_Name: FizzBuzzEnemy
   m_EditorClassIdentifier: 
-  enemyName: FIZZBUZZ
-  movementSpeed: 0.8
-  enemyColor: {r: 0.735849, g: 0.17702027, b: 0.17702027, a: 0}
+  enemyType: 3
+  movementSpeed: 1
+  color: {r: 0.7830189, g: 0.15881987, b: 0.15881987, a: 0}

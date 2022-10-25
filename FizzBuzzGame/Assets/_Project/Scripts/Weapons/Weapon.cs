@@ -1,24 +1,35 @@
-﻿using System;
-using AlphDevCode.ScriptableObjects;
-using AlphDevCode.Tools;
+﻿using AlphDevCode.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.VFX;
 
 namespace AlphDevCode.Weapons
 {
     public class Weapon : MonoBehaviour
     {
-        public WeaponScriptableObject weaponScriptableObject;
+        [SerializeField] private WeaponScriptableObject weaponData;
 
         [SerializeField] private Transform firePoint;
         [SerializeField] private Bullet bulletPrefab;
 
         private float _shootingInterval;
+
         private float _reloadTimer;
         private IObjectPool<Bullet> _bulletPool;
 
         public bool IsShooting { get; set; }
+
+        public void SetData(WeaponScriptableObject weaponTypeData)
+        {
+            if (weaponData == weaponTypeData) return;
+            weaponData = weaponTypeData;
+            InitializeData();
+        }
+
+        private void InitializeData()
+        {
+            _shootingInterval = weaponData.shootingInterval;
+            GetComponent<Renderer>().material.color = weaponData.targetEnemyType.color;
+        }
 
         private void Awake()
         {
@@ -42,6 +53,7 @@ namespace AlphDevCode.Weapons
             bullet.transform.position = firePoint.position;
             bullet.SetSpeed(20f);
             bullet.SetDirection(firePoint.forward);
+            bullet.SetColor(weaponData.targetEnemyType.color);
             bullet.gameObject.SetActive(true);
         }
 
@@ -49,18 +61,18 @@ namespace AlphDevCode.Weapons
         {
             bullet.gameObject.SetActive(false);
         }
-        
+
         private void OnDestroyBullet(Bullet bullet)
         {
             Destroy(bullet.gameObject);
         }
-        
+
         private void Start()
         {
-            _shootingInterval = weaponScriptableObject.shootingInterval;
+            InitializeData();
         }
 
-        public void Shoot()
+        private void Shoot()
         {
             if (_reloadTimer > 0 || !IsShooting) return;
 

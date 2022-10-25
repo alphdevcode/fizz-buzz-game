@@ -12,12 +12,12 @@ namespace AlphDevCode.Enemies
 
         private void Awake()
         {
-            _player = GameObject.FindWithTag("Player").transform;
             _navMeshAgentMovement = GetComponent<NavMeshAgentMovement>();
         }
 
         void Start()
         {
+            _player = GameObject.FindWithTag("Player").transform;
             // _navMeshAgentMovement.MoveTo(_player.position);
         }
 

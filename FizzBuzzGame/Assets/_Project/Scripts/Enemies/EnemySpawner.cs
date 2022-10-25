@@ -34,7 +34,7 @@ namespace AlphDevCode.Enemies
         {
             enemy.gameObject.SetActive(true);
             enemy.MoveToPlayer();
-            enemy.SetEnemyType();
+            enemy.SetEnemyTypeData();
         }
 
         private void OnReleaseEnemy(Enemy enemy)

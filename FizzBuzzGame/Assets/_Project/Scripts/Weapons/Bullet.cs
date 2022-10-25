@@ -11,7 +11,8 @@ namespace AlphDevCode.Weapons
     {
         private float _speed = 1;
         private Vector3 _direction = Vector3.forward;
-        private Movement _movement;
+        
+        private readonly Movement _movement = new Movement();
         private IObjectPool<Bullet> _bulletPool;
 
         public void SetPool(IObjectPool<Bullet> pool)
@@ -29,10 +30,12 @@ namespace AlphDevCode.Weapons
             _direction = direction;
         }
 
-
-        private void Start()
+        public void SetColor(Color color)
         {
-            _movement = new Movement();
+            if(TryGetComponent<MeshRenderer>(out var meshRenderer))
+            {
+                meshRenderer.material.color = color;
+            }
         }
 
         private void Update()

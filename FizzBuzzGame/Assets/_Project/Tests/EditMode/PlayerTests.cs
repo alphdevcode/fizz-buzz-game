@@ -2,7 +2,7 @@ using AlphDevCode.Player;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace AlphDevCode.Test.EditMode
+namespace Tests
 {
 
     public class PlayerTests

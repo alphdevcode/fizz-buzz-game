@@ -2,7 +2,7 @@ using AlphDevCode.Enemies;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace AlphDevCode.Test.EditMode
+namespace Tests
 {
     public class EnemyTests
     {

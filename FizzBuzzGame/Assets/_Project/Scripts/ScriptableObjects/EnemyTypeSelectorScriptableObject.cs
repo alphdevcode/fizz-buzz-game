@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AlphDevCode.ScriptableObjects;
+using AlphDevCode.Tools;
 using UnityEngine;
 
-namespace AlphDevCode.Enemies
+namespace AlphDevCode.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New EnemyTypeSelector", menuName = "EnemyTypeSelector")]
     public class EnemyTypeSelectorScriptableObject : ScriptableObject
     {
         [SerializeField] private List<EnemyTypeScriptableObject> enemyTypes;
 
-        public EnemyTypeScriptableObject GetEnemyByTypeName(string enemyTypeName)
+        public EnemyTypeScriptableObject GetEnemyData(FizzBuzzLogicType enemyType)
         {
-            return enemyTypes.First(enemyType => enemyType.enemyName == enemyTypeName);
+            return enemyTypes.First(enemy => enemy.enemyType == enemyType);
         }
     }
 }

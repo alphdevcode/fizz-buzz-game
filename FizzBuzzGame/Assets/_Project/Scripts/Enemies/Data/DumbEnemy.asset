@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296e7c79280b437697ce57b41825ba06, type: 3}
   m_Name: DumbEnemy
   m_EditorClassIdentifier: 
-  enemyName: DUMB
-  movementSpeed: 1
-  enemyColor: {r: 0.77254903, g: 0.74313027, b: 0.18431373, a: 0}
+  enemyType: 0
+  movementSpeed: 2
+  color: {r: 0.7455529, g: 0.764151, b: 0.16941082, a: 0}

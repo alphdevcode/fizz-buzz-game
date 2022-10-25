@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 321794123}
   - component: {fileID: 321794122}
   - component: {fileID: 315998826}
+  - component: {fileID: 615914693458065631}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -96,11 +97,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2440ab374a0147aba83d6c2cf8cf4349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponScriptableObject: {fileID: 11400000, guid: a27056d212174a60b788ab8307db27a0,
-    type: 2}
+  weaponData: {fileID: 11400000, guid: a27056d212174a60b788ab8307db27a0, type: 2}
   firePoint: {fileID: 402331897444965830}
   bulletPrefab: {fileID: 4468224859116932162, guid: 73705593462ad8f48bb7ef7033ba449c,
     type: 3}
+--- !u!114 &615914693458065631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321794119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7afd6c03199c5541968573eb0c927b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSelector: {fileID: 11400000, guid: 37c36ed0aea5dc04d903414187ed0d4c, type: 2}
 --- !u!1 &583989358368877000
 GameObject:
   m_ObjectHideFlags: 0

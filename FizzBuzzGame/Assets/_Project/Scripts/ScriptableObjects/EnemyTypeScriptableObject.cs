@@ -7,8 +7,8 @@ namespace AlphDevCode.ScriptableObjects
     [CreateAssetMenu(fileName = "New EnemyType", menuName = "EnemyType")]
     public class EnemyTypeScriptableObject : ScriptableObject
     {
-        public string enemyName = FizzBuzzLogic.DumbName;
+        public FizzBuzzLogicType enemyType = FizzBuzzLogicType.DUMB;
         public float movementSpeed = 1f;
-        public Color enemyColor;
+        public Color color;
     }
 }
