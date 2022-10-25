@@ -28,7 +28,7 @@ namespace AlphDevCode.Weapons
         private void InitializeData()
         {
             _shootingInterval = weaponData.shootingInterval;
-            GetComponent<Renderer>().material.color = weaponData.targetEnemyType.color;
+            GetComponent<MeshRenderer>().material.color = weaponData.targetEnemyType.color;
         }
 
         private void Awake()
@@ -51,9 +51,8 @@ namespace AlphDevCode.Weapons
         private void OnGetBullet(Bullet bullet)
         {
             bullet.transform.position = firePoint.position;
-            bullet.SetSpeed(20f);
-            bullet.SetDirection(firePoint.forward);
-            bullet.SetColor(weaponData.targetEnemyType.color);
+            bullet.Direction = firePoint.forward;
+            bullet.SetData(weaponData);
             bullet.gameObject.SetActive(true);
         }
 

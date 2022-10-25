@@ -7,5 +7,6 @@ namespace AlphDevCode.ScriptableObjects
     {
         public EnemyTypeScriptableObject targetEnemyType;
         public float shootingInterval = .5f;
+        public float bulletSpeed = 20f;
     }
 }

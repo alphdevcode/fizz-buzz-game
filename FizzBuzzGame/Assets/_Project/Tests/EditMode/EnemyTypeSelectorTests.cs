@@ -7,16 +7,12 @@ namespace Tests
 {
     public class EnemyTypeSelectorTests
     {
-        private EnemyTypeSelectorScriptableObject _enemyTypeSelector;
+        private const string EnemyDataPath = "Assets/_Project/Scripts/Enemies/Data";
 
-        [OneTimeSetUp]
-        public void InitializeEnemyTypeSelector()
-        {
-            var assetNames = AssetDatabase.FindAssets("EnemyTypeSelector", 
-                    new[] { "Assets/_Project/Scripts/Enemies/Data" });
-            var assetPath = AssetDatabase.GUIDToAssetPath(assetNames[0]);
-            _enemyTypeSelector = AssetDatabase.LoadAssetAtPath<EnemyTypeSelectorScriptableObject>(assetPath);
-        }
+        private readonly EnemyTypeSelectorScriptableObject _enemyTypeSelector =
+            AssetDatabase.LoadAssetAtPath<EnemyTypeSelectorScriptableObject>(
+                $"{EnemyDataPath}/EnemyTypeSelector.asset");
+
 
         [Test]
         [TestCase(FizzBuzzLogicType.DUMB, "DumbEnemy")]
@@ -26,10 +22,8 @@ namespace Tests
         public void Given_FizzBuzzLogicName_Then_EnemyType(FizzBuzzLogicType fizzBuzzLogicType,
             string expectedEnemyTypeName)
         {
-            var assetNames = AssetDatabase.FindAssets($"{expectedEnemyTypeName}",
-                new[] { "Assets/_Project/Scripts/Enemies/Data" });
-            var assetPath = AssetDatabase.GUIDToAssetPath(assetNames[0]);
-            var enemyType = AssetDatabase.LoadAssetAtPath<EnemyTypeScriptableObject>(assetPath);
+            var enemyType =
+                AssetDatabase.LoadAssetAtPath<EnemyTypeScriptableObject>($"{EnemyDataPath}/{expectedEnemyTypeName}.asset");
 
             Assert.AreEqual(enemyType, _enemyTypeSelector.GetEnemyData(fizzBuzzLogicType));
         }

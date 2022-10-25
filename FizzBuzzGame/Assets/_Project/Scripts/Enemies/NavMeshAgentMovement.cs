@@ -19,16 +19,17 @@ namespace AlphDevCode.Enemies
         private void Awake()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _player = GameObject.FindWithTag("Player").transform;
         }
 
         private void Start()
         {
-            _player = GameObject.FindWithTag("Player").transform;
+            // MoveTo(_player.position);
         }
 
         private void OnEnable()
         {
-            // MoveTo(_player.position);
+            MoveTo(_player.position);
         }
     }
 }

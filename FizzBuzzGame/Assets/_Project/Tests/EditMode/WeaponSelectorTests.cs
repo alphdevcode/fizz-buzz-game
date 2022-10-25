@@ -7,16 +7,11 @@ namespace Tests
 {
     public class WeaponSelectorTests
     {
-        private WeaponSelectorScriptableObject _weaponSelector;
+        private const string WeaponDataPath = "Assets/_Project/Scripts/Weapons/Data";
 
-        [OneTimeSetUp]
-        public void InitializeWeaponTypeSelector()
-        {
-            var assetNames = AssetDatabase.FindAssets("WeaponSelector",
-                new[] { "Assets/_Project/Scripts/Weapons/Data" });
-            var assetPath = AssetDatabase.GUIDToAssetPath(assetNames[0]);
-            _weaponSelector = AssetDatabase.LoadAssetAtPath<WeaponSelectorScriptableObject>(assetPath);
-        }
+        private readonly WeaponSelectorScriptableObject _weaponSelector =
+            AssetDatabase.LoadAssetAtPath<WeaponSelectorScriptableObject>($"{WeaponDataPath}/WeaponSelector.asset");
+
 
         [Test]
         [TestCase(FizzBuzzLogicType.DUMB, "DumbWeapon")]
@@ -25,10 +20,8 @@ namespace Tests
         [TestCase(FizzBuzzLogicType.FIZZBUZZ, "FizzBuzzWeapon")]
         public void Given_EnemyType_Then_Weapon(FizzBuzzLogicType fizzBuzzLogicType, string expectedWeaponName)
         {
-            var assetNames = AssetDatabase.FindAssets($"{expectedWeaponName}",
-                new[] { "Assets/_Project/Scripts/Weapons/Data" });
-            var assetPath = AssetDatabase.GUIDToAssetPath(assetNames[0]);
-            var weapon = AssetDatabase.LoadAssetAtPath<WeaponScriptableObject>(assetPath);
+            var weapon =
+                AssetDatabase.LoadAssetAtPath<WeaponScriptableObject>($"{WeaponDataPath}/{expectedWeaponName}.asset");
 
             Assert.AreEqual(weapon, _weaponSelector.GetWeaponData(fizzBuzzLogicType));
         }

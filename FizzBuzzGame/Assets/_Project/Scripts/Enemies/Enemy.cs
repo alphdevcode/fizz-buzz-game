@@ -19,6 +19,7 @@ namespace AlphDevCode.Enemies
         private IObjectPool<Enemy> _enemyPool;
         private readonly FizzBuzzLogic _fizzBuzzLogic = new FizzBuzzLogic();
 
+        public EnemyTypeScriptableObject EnemyType => enemyType;
 
         public void SetPool(IObjectPool<Enemy> enemyPool)
         {
@@ -30,18 +31,22 @@ namespace AlphDevCode.Enemies
             navMeshAgent.Warp(position);
         }
 
-        public void MoveToPlayer()
+        public void Initialize()
         {
-            navMeshAgent.SetDestination(
-                GameObject.FindWithTag("Player").transform.position);
+            GetRandomEnemyType();
+            MoveToPlayer();
         }
 
-        public void SetEnemyTypeData()
+        private void GetRandomEnemyType()
         {
             var fizzBuzzNumber = _fizzBuzzLogic.GetRandomNumber();
             var enemyTypeName = _fizzBuzzLogic.EvaluateNumber(fizzBuzzNumber);
-            this.enemyType = enemyTypeSelector.GetEnemyData(enemyTypeName);
+            SetEnemyTypeData(enemyTypeSelector.GetEnemyData(enemyTypeName),fizzBuzzNumber);
+        }
 
+        public void SetEnemyTypeData(EnemyTypeScriptableObject enemyData, int fizzBuzzNumber = 0)
+        {
+            this.enemyType = enemyData;
             InitializeEnemyData(fizzBuzzNumber);
         }
 
@@ -50,6 +55,12 @@ namespace AlphDevCode.Enemies
             navMeshAgent.speed = this.enemyType.movementSpeed;
             meshRenderer.material.color = this.enemyType.color;
             fizzBuzzNumberText.text = $"{fizzBuzzNumber}";
+        }
+
+        private void MoveToPlayer()
+        {
+            navMeshAgent.SetDestination(
+                GameObject.FindWithTag("Player").transform.position);
         }
 
         public void ReleaseFromPool()

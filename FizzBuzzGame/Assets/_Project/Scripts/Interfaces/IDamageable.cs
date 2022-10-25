@@ -1,7 +1,9 @@
-﻿namespace AlphDevCode.Interfaces
+﻿using AlphDevCode.ScriptableObjects;
+
+namespace AlphDevCode.Interfaces
 {
     public interface IDamageable
     {
-        void TakeDamage();
+        void TakeDamage(EnemyTypeScriptableObject enemyTypeData);
     }
 }

@@ -21,11 +21,16 @@ namespace AlphDevCode.Enemies
             ActivateEnemy(true);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(EnemyTypeScriptableObject enemyTypeData)
         {
             if (_isDead) return;
 
-            Die();
+            if (enemyTypeData == enemy.EnemyType)
+                Die();
+            else
+            {
+                //TODO: Bock attack animation?
+            }
         }
 
         public void Die()

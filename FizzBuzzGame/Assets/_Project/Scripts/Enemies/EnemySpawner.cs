@@ -33,8 +33,6 @@ namespace AlphDevCode.Enemies
         private void OnGetEnemy(Enemy enemy)
         {
             enemy.gameObject.SetActive(true);
-            enemy.MoveToPlayer();
-            enemy.SetEnemyTypeData();
         }
 
         private void OnReleaseEnemy(Enemy enemy)
@@ -60,6 +58,7 @@ namespace AlphDevCode.Enemies
             var point = _spawnBoundary.GetRandomSpawnPoint();
             var enemy = _enemyPool.Get();
             enemy.SetPosition(new Vector3(point.x, 0, point.y));
+            enemy.Initialize();
         }
     }
 }
