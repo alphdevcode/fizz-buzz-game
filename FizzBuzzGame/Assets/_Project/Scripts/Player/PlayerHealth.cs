@@ -1,4 +1,5 @@
-﻿using AlphDevCode.Interfaces;
+﻿using System;
+using AlphDevCode.Interfaces;
 using AlphDevCode.ScriptableObjects;
 using UnityEngine;
 
@@ -6,11 +7,12 @@ namespace AlphDevCode.Player
 {
     public class PlayerHealth : MonoBehaviour, IDamageable, IDieable
     {
-        private const int MaxHealth = 30;
+        private const int MaxHealth = 50;
 
+        public event Action OnHealthChange;
         public int CurrentHealth { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             CurrentHealth = MaxHealth;
         }
@@ -18,6 +20,8 @@ namespace AlphDevCode.Player
         public void TakeDamage(EnemyTypeScriptableObject enemyTypeData)
         {
             CurrentHealth -= enemyTypeData.CalculateDamageToPlayer();
+            OnHealthChange?.Invoke();
+
             if (CurrentHealth <= 0)
                 Die();
         }
