@@ -1,4 +1,6 @@
-﻿using AlphDevCode.ScriptableObjects;
+﻿using System;
+using AlphDevCode.ScriptableObjects;
+using AlphDevCode.Tools;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -17,11 +19,14 @@ namespace AlphDevCode.Weapons
         private IObjectPool<Bullet> _bulletPool;
 
         public bool IsShooting { get; set; }
+        public WeaponScriptableObject WeaponType => weaponData;
+        public event Action<WeaponScriptableObject> OnWeaponChange;
 
         public void SetData(WeaponScriptableObject weaponTypeData)
         {
             if (weaponData == weaponTypeData) return;
             weaponData = weaponTypeData;
+            OnWeaponChange?.Invoke(weaponTypeData);
             InitializeData();
         }
 
@@ -40,6 +45,8 @@ namespace AlphDevCode.Weapons
                 OnDestroyBullet,
                 maxSize: 10);
         }
+
+        #region PoolMethods
 
         private Bullet CreateBullet()
         {
@@ -65,6 +72,8 @@ namespace AlphDevCode.Weapons
         {
             Destroy(bullet.gameObject);
         }
+
+        #endregion
 
         private void Start()
         {

@@ -10,7 +10,7 @@ namespace AlphDevCode.Weapons
     {
         [SerializeField] private WeaponSelectorScriptableObject weaponSelector;
         private Weapon _weapon;
-
+        
         private void Start()
         {
             _weapon = GetComponent<Weapon>();
@@ -31,5 +31,6 @@ namespace AlphDevCode.Weapons
         {
             _weapon.SetData(weaponSelector.GetWeaponData(weaponType, true));
         }
+
     }
 }
