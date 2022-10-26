@@ -1,6 +1,4 @@
-﻿using System;
-using AlphDevCode.Enemies;
-using AlphDevCode.Interfaces;
+﻿using AlphDevCode.Interfaces;
 using AlphDevCode.ScriptableObjects;
 using AlphDevCode.Tools;
 using UnityEngine;
@@ -18,8 +16,6 @@ namespace AlphDevCode.Weapons
         private readonly Movement _movement = new Movement();
         private IObjectPool<Bullet> _bulletPool;
         
-        // public EnemyTypeScriptableObject TargetEnemyType { get; }
-        // public float Speed { set => _speed = value; }
         public Vector3 Direction { set => _direction = value; }
 
         public void SetPool(IObjectPool<Bullet> pool)
@@ -55,7 +51,7 @@ namespace AlphDevCode.Weapons
 
         private void OnTriggerEnter(Collider hitCollider)
         {
-            if (hitCollider.gameObject.TryGetComponent(out IDamageable damageable))
+            if (hitCollider.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(_targetEnemyType);
             }

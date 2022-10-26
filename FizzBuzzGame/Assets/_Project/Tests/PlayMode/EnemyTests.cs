@@ -18,16 +18,15 @@ namespace Tests
 
         private readonly EnemyTypeSelectorScriptableObject _enemyTypeSelector =
             AssetDatabase.LoadAssetAtPath<EnemyTypeSelectorScriptableObject>(EnemyTypeSelectorPath);
-
+        
         private static FizzBuzzLogicType[] _fizzBuzzLogicTypes =
         {
-            FizzBuzzLogicType.DUMB,
-            FizzBuzzLogicType.FIZZ,
-            FizzBuzzLogicType.BUZZ,
-            FizzBuzzLogicType.FIZZBUZZ
+            FizzBuzzLogicType.Dumb,
+            FizzBuzzLogicType.Fizz,
+            FizzBuzzLogicType.Buzz,
+            FizzBuzzLogicType.FizzBuzz
         };
-
-
+        
         [UnityTest]
         public IEnumerator Given_TakeDamageSameType_Then_Die(
             [ValueSource(nameof(_fizzBuzzLogicTypes))]
@@ -37,13 +36,13 @@ namespace Tests
 
             var enemy = GameObject.Instantiate(_enemyPrefab);
 
-            yield return null;
 
             enemy.SetEnemyTypeData(enemyData);
 
             var enemyHealth = enemy.GetComponentInChildren<EnemyHealth>();
             enemyHealth.TakeDamage(enemyData);
 
+            yield return null;
             Assert.IsFalse(enemyHealth.GetComponent<BoxCollider>().enabled);
         }
 

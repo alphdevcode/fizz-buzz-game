@@ -55,23 +55,28 @@ namespace AlphDevCode.Player
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.DUMB);
+                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.Dumb);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.FIZZ);
+                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.Fizz);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.BUZZ);
+                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.Buzz);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.FIZZBUZZ);
+                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.FizzBuzz);
             }
+        }
+
+        private void OnDisable()
+        {
+            _weapon.IsShooting = false;
         }
     }
 }

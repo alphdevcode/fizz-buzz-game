@@ -7,7 +7,7 @@ namespace AlphDevCode.Enemies
 {
     public class Sinker
     {
-        private Transform _transform;
+        private readonly Transform _transform;
 
         public Sinker(Transform transform)
         {

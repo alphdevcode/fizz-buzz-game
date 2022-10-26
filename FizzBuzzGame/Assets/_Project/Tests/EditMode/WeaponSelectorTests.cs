@@ -14,10 +14,10 @@ namespace Tests
 
 
         [Test]
-        [TestCase(FizzBuzzLogicType.DUMB, "DumbWeapon")]
-        [TestCase(FizzBuzzLogicType.FIZZ, "FizzWeapon")]
-        [TestCase(FizzBuzzLogicType.BUZZ, "BuzzWeapon")]
-        [TestCase(FizzBuzzLogicType.FIZZBUZZ, "FizzBuzzWeapon")]
+        [TestCase(FizzBuzzLogicType.Dumb, "DumbWeapon")]
+        [TestCase(FizzBuzzLogicType.Fizz, "FizzWeapon")]
+        [TestCase(FizzBuzzLogicType.Buzz, "BuzzWeapon")]
+        [TestCase(FizzBuzzLogicType.FizzBuzz, "FizzBuzzWeapon")]
         public void Given_EnemyType_Then_Weapon(FizzBuzzLogicType fizzBuzzLogicType, string expectedWeaponName)
         {
             var weapon =

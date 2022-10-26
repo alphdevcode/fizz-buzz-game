@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Security.Cryptography;
-using AlphDevCode.Interfaces;
+﻿using AlphDevCode.Interfaces;
 using AlphDevCode.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Pool;
 
 namespace AlphDevCode.Enemies
 {
@@ -16,11 +12,6 @@ namespace AlphDevCode.Enemies
         private const float SinkSpeed = 2.5f;
         private bool _isDead = false;
 
-        private void OnEnable()
-        {
-            ActivateEnemy(true);
-        }
-
         public void TakeDamage(EnemyTypeScriptableObject enemyTypeData)
         {
             if (_isDead) return;
@@ -29,7 +20,7 @@ namespace AlphDevCode.Enemies
                 Die();
             else
             {
-                //TODO: Bock attack animation?
+                //TODO: Block attack animation?
             }
         }
 
@@ -38,7 +29,8 @@ namespace AlphDevCode.Enemies
             ActivateEnemy(false);
             
             var sinker = new Sinker(transform);
-            StartCoroutine(sinker.SinkDown(SinkSpeed, 5f, () => { enemy.ReleaseFromPool(); }));
+            StartCoroutine(sinker.SinkDown(SinkSpeed, 5f, 
+                () => { enemy.ReleaseFromPool(); }));
         }
 
         private void ActivateEnemy(bool active)
@@ -48,6 +40,10 @@ namespace AlphDevCode.Enemies
             if(TryGetComponent(out NavMeshAgent navMeshAgent)) navMeshAgent.enabled = active;
             GetComponent<BoxCollider>().enabled = active;
         }
-        
+
+        private void OnEnable()
+        {
+            ActivateEnemy(true);
+        }
     }
 }

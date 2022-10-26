@@ -67,5 +67,6 @@ namespace AlphDevCode.Enemies
         {
             _enemyPool.Release(this);
         }
+        
     }
 }

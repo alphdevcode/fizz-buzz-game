@@ -2,9 +2,9 @@
 {
     public enum FizzBuzzLogicType
     {
-        DUMB,
-        FIZZ,
-        BUZZ,
-        FIZZBUZZ
+        Dumb,
+        Fizz,
+        Buzz,
+        FizzBuzz
     }
 }

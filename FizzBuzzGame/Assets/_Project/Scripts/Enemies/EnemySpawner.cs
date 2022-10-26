@@ -13,6 +13,11 @@ namespace AlphDevCode.Enemies
 
         private const float SpawnRate = 1f;
 
+        public void StopSpawningEnemies()
+        {
+            CancelInvoke(nameof(SpawnEnemyAtRandomPosition));
+        }
+
         private void Awake()
         {
             _enemyPool = new ObjectPool<Enemy>(
@@ -22,6 +27,8 @@ namespace AlphDevCode.Enemies
                 OnDestroyEnemy,
                 maxSize: 10);
         }
+
+        #region PoolMethods
 
         private Enemy CreateEnemy()
         {
@@ -44,6 +51,8 @@ namespace AlphDevCode.Enemies
         {
             Destroy(enemy.gameObject);
         }
+
+        #endregion
 
         private void Start()
         {

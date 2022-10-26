@@ -15,10 +15,10 @@ namespace AlphDevCode.Tools
         
         public FizzBuzzLogicType EvaluateNumber(int number)
         {
-            if (number % 15 == 0) return FizzBuzzLogicType.FIZZBUZZ;
-            if (number % 3 == 0) return FizzBuzzLogicType.FIZZ;
-            if (number % 5 == 0) return FizzBuzzLogicType.BUZZ;
-            return FizzBuzzLogicType.DUMB;
+            if (number % 15 == 0) return FizzBuzzLogicType.FizzBuzz;
+            if (number % 3 == 0) return FizzBuzzLogicType.Fizz;
+            if (number % 5 == 0) return FizzBuzzLogicType.Buzz;
+            return FizzBuzzLogicType.Dumb;
         }
     }
 }
