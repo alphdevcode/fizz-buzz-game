@@ -9,7 +9,7 @@ namespace AlphDevCode.Player
     {
         private Rotation _rotation;
         private Weapon _weapon;
-        private WeaponSwitching _weaponSwitching;
+        private WeaponSwitcher _weaponSwitcher;
 
         private void Awake()
         {
@@ -19,7 +19,7 @@ namespace AlphDevCode.Player
 
         private void Start()
         {
-            _weaponSwitching = _weapon.GetComponent<WeaponSwitching>();
+            _weaponSwitcher = _weapon.GetComponent<WeaponSwitcher>();
         }
 
         private void Update()
@@ -45,32 +45,32 @@ namespace AlphDevCode.Player
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
-                _weaponSwitching.NextWeapon();
+                _weaponSwitcher.NextWeapon();
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
-                _weaponSwitching.PreviousWeapon();
+                _weaponSwitcher.PreviousWeapon();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.Dumb);
+                _weaponSwitcher.ChangeWeapon(FizzBuzzLogicType.Dumb);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.Fizz);
+                _weaponSwitcher.ChangeWeapon(FizzBuzzLogicType.Fizz);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.Buzz);
+                _weaponSwitcher.ChangeWeapon(FizzBuzzLogicType.Buzz);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                _weaponSwitching.ChangeWeapon(FizzBuzzLogicType.FizzBuzz);
+                _weaponSwitcher.ChangeWeapon(FizzBuzzLogicType.FizzBuzz);
             }
         }
 

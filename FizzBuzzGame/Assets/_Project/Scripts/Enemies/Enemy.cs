@@ -13,22 +13,18 @@ namespace AlphDevCode.Enemies
         [SerializeField] private EnemyTypeScriptableObject enemyType;
 
         [SerializeField] private MeshRenderer meshRenderer;
-        [SerializeField] private NavMeshAgent navMeshAgent;
+        [SerializeField] private NavMeshAgentMovement movement;
         [SerializeField] private TMP_Text fizzBuzzNumberText;
 
         private IObjectPool<Enemy> _enemyPool;
         private readonly FizzBuzzLogic _fizzBuzzLogic = new FizzBuzzLogic();
 
         public EnemyTypeScriptableObject EnemyType => enemyType;
+        public NavMeshAgentMovement Movement => movement;
 
         public void SetPool(IObjectPool<Enemy> enemyPool)
         {
             _enemyPool = enemyPool;
-        }
-
-        public void SetPosition(Vector3 position)
-        {
-            navMeshAgent.Warp(position);
         }
 
         public void Initialize()
@@ -41,7 +37,7 @@ namespace AlphDevCode.Enemies
         {
             var fizzBuzzNumber = _fizzBuzzLogic.GetRandomNumber();
             var enemyTypeName = _fizzBuzzLogic.EvaluateNumber(fizzBuzzNumber);
-            SetEnemyTypeData(enemyTypeSelector.GetEnemyData(enemyTypeName),fizzBuzzNumber);
+            SetEnemyTypeData(enemyTypeSelector.GetEnemyData(enemyTypeName), fizzBuzzNumber);
         }
 
         public void SetEnemyTypeData(EnemyTypeScriptableObject enemyData, int fizzBuzzNumber = 0)
@@ -52,21 +48,19 @@ namespace AlphDevCode.Enemies
 
         private void InitializeEnemyData(int fizzBuzzNumber)
         {
-            navMeshAgent.speed = this.enemyType.movementSpeed;
+            movement.SetSpeed(this.enemyType.movementSpeed);
             meshRenderer.material.color = this.enemyType.color;
             fizzBuzzNumberText.text = $"{fizzBuzzNumber}";
         }
 
         private void MoveToPlayer()
         {
-            navMeshAgent.SetDestination(
-                GameObject.FindWithTag("Player").transform.position);
+            movement.MoveToDestination(GameObject.FindWithTag("Player").transform.position);
         }
 
         public void ReleaseFromPool()
         {
             _enemyPool.Release(this);
         }
-        
     }
 }

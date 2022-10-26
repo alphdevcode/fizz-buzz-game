@@ -12,6 +12,7 @@ namespace AlphDevCode.Weapons
 
         [SerializeField] private Transform firePoint;
         [SerializeField] private Bullet bulletPrefab;
+        [SerializeField] private Transform bulletsContainer;
 
         private float _shootingInterval;
 
@@ -50,7 +51,7 @@ namespace AlphDevCode.Weapons
 
         private Bullet CreateBullet()
         {
-            Bullet bullet = Instantiate(bulletPrefab);
+            Bullet bullet = Instantiate(bulletPrefab, bulletsContainer);
             bullet.SetPool(_bulletPool);
             return bullet;
         }

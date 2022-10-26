@@ -9,7 +9,9 @@ namespace AlphDevCode.Player
     {
         private const int MaxHealth = 50;
 
+        public event Action OnPlayerDie;
         public event Action OnHealthChange;
+        public event Action<int> OnDamageReceived;
         public int CurrentHealth { get; private set; }
 
         private void Awake()
@@ -19,7 +21,8 @@ namespace AlphDevCode.Player
 
         public void TakeDamage(EnemyTypeScriptableObject enemyTypeData)
         {
-            CurrentHealth -= enemyTypeData.CalculateDamageToPlayer();
+            CurrentHealth -= enemyTypeData.GetFizzBuzzLogicValue();
+            OnDamageReceived?.Invoke(enemyTypeData.GetFizzBuzzLogicValue());
             OnHealthChange?.Invoke();
 
             if (CurrentHealth <= 0)
@@ -28,7 +31,7 @@ namespace AlphDevCode.Player
 
         public void Die()
         {
-            GetComponent<PlayerInput>().enabled = false;
+            OnPlayerDie?.Invoke();
         }
         
         

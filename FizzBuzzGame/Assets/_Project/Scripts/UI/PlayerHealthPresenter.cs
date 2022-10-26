@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace AlphDevCode.UI
 {
-    public class PlayerHealthPresenter :MonoBehaviour
+    public class PlayerHealthPresenter : MonoBehaviour
     {
         [SerializeField] private PlayerHealth playerHealth;
         [SerializeField] private Slider playerHealthSlider;

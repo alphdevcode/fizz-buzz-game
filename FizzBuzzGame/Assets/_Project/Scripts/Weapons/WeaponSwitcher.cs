@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AlphDevCode.Weapons
 {
     [RequireComponent(typeof(Weapon))]
-    public class WeaponSwitching : MonoBehaviour
+    public class WeaponSwitcher : MonoBehaviour
     {
         [SerializeField] private WeaponSelectorScriptableObject weaponSelector;
         private Weapon _weapon;

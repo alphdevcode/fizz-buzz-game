@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
-using AlphDevCode.Tools;
 using UnityEngine;
 
-namespace AlphDevCode.Enemies
+namespace AlphDevCode.Tools
 {
     public class Sinker
     {

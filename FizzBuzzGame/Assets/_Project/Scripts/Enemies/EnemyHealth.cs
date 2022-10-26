@@ -1,5 +1,7 @@
-﻿using AlphDevCode.Interfaces;
+﻿using System;
+using AlphDevCode.Interfaces;
 using AlphDevCode.ScriptableObjects;
+using AlphDevCode.Tools;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +13,8 @@ namespace AlphDevCode.Enemies
         [SerializeField] private Enemy enemy;
         private const float SinkSpeed = 2.5f;
         private bool _isDead = false;
+
+        public static event Action<int> OnEnemyDie;
 
         public void TakeDamage(EnemyTypeScriptableObject enemyTypeData)
         {
@@ -26,6 +30,7 @@ namespace AlphDevCode.Enemies
 
         public void Die()
         {
+            OnEnemyDie?.Invoke(enemy.EnemyType.GetFizzBuzzLogicValue());
             ActivateEnemy(false);
             
             var sinker = new Sinker(transform);

@@ -31,13 +31,13 @@ namespace AlphDevCode.UI
         private void UpdateUI(WeaponScriptableObject weaponType)
         {
             HighlightWeaponImage(dumbWeaponImage, 
-                dumbWeaponImage.GetComponent<WeaponImageType>().WeaponType == weaponType);
+                dumbWeaponImage.GetComponent<UIWeaponImageType>().WeaponType == weaponType);
             HighlightWeaponImage(fizzWeaponImage, 
-                fizzWeaponImage.GetComponent<WeaponImageType>().WeaponType == weaponType);
+                fizzWeaponImage.GetComponent<UIWeaponImageType>().WeaponType == weaponType);
             HighlightWeaponImage(buzzWeaponImage, 
-                buzzWeaponImage.GetComponent<WeaponImageType>().WeaponType == weaponType);
+                buzzWeaponImage.GetComponent<UIWeaponImageType>().WeaponType == weaponType);
             HighlightWeaponImage(fizzBuzzWeaponImage, 
-                fizzBuzzWeaponImage.GetComponent<WeaponImageType>().WeaponType == weaponType);
+                fizzBuzzWeaponImage.GetComponent<UIWeaponImageType>().WeaponType == weaponType);
         }
 
         private void HighlightWeaponImage(Image image, bool highlight = true)

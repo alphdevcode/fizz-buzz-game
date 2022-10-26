@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AlphDevCode.UI
 {
-    public class WeaponImageType : MonoBehaviour
+    public class UIWeaponImageType : MonoBehaviour
     {
         [SerializeField] private WeaponScriptableObject weaponType;
 

@@ -10,7 +10,7 @@ namespace AlphDevCode.ScriptableObjects
         public float movementSpeed = 1f;
         public Color color;
 
-        public int CalculateDamageToPlayer()
+        public int GetFizzBuzzLogicValue()
         {
             return enemyType switch
             {

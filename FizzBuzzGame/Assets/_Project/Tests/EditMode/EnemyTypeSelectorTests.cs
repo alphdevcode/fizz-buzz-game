@@ -38,7 +38,7 @@ namespace Tests
         {
             var enemyType = _enemyTypeSelector.GetEnemyData(type);
 
-            Assert.AreEqual(expectedDamage, enemyType.CalculateDamageToPlayer());
+            Assert.AreEqual(expectedDamage, enemyType.GetFizzBuzzLogicValue());
         }
     }
 }
