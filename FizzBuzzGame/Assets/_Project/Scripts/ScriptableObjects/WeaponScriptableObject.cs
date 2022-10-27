@@ -2,7 +2,7 @@
 
 namespace AlphDevCode.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "NewWeapon", menuName = "Weapon")]
+    [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
     public class WeaponScriptableObject : ScriptableObject
     {
         public EnemyTypeScriptableObject targetEnemyType;

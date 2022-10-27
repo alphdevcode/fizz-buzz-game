@@ -2,7 +2,6 @@ using AlphDevCode.ScriptableObjects;
 using AlphDevCode.Tools;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Pool;
 
 namespace AlphDevCode.Enemies
@@ -17,7 +16,7 @@ namespace AlphDevCode.Enemies
         [SerializeField] private TMP_Text fizzBuzzNumberText;
 
         private IObjectPool<Enemy> _enemyPool;
-        private readonly FizzBuzzLogic _fizzBuzzLogic = new FizzBuzzLogic();
+        private readonly FizzBuzzLogic _fizzBuzzLogic = new();
 
         public EnemyTypeScriptableObject EnemyType => enemyType;
         public NavMeshAgentMovement Movement => movement;

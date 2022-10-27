@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using AlphDevCode.Enemies;
 using AlphDevCode.ScriptableObjects;
 using AlphDevCode.Tools;
@@ -12,26 +13,46 @@ namespace AlphDevCode.Managers
     {
         [SerializeField] private Transform enemiesContainer;
         [SerializeField] private Enemy enemyPrefab;
+        
         private readonly SpawnBoundary _spawnBoundary = new();
         private readonly List<Enemy> _activeEnemies = new();
         private IObjectPool<Enemy> _enemyPool;
-
-        private const float SpawnRate = 1f;
-
-        public void StartSpawningEnemies()
-        {
-            InvokeRepeating(
-                nameof(SpawnEnemyAtRandomPosition),
-                SpawnRate,
-                SpawnRate);
-        }
         
+        private WaveScriptableObject _waveData;
+        private int _enemiesLeft;
+        private Coroutine _spawnCoroutine;
+
+        public event Action OnWaveCompleted;
+
+        public void InitializeWaveData(WaveScriptableObject wave)
+        {
+            _waveData = wave;
+            _enemiesLeft = wave.enemiesAmount;
+            _spawnCoroutine = StartCoroutine(StartSpawningEnemies());
+        }
+
+        private IEnumerator StartSpawningEnemies()
+        {
+            var enemiesToSpawn = _waveData.enemiesAmount;
+
+            for (;;)
+            {
+                if (enemiesToSpawn == 0) break;
+
+                yield return new WaitForSeconds(_waveData.spawnRate);
+                SpawnEnemyAtRandomPosition();
+
+                if (enemiesToSpawn != -1)
+                    enemiesToSpawn--;
+            }
+        }
+
         public void StopSpawningEnemies()
         {
-            CancelInvoke(nameof(SpawnEnemyAtRandomPosition));
+            StopCoroutine(_spawnCoroutine);
         }
 
-        public void StopEnemiesMovement()
+        public void StopAllEnemiesMovement()
         {
             foreach (var enemy in _activeEnemies)
             {
@@ -55,7 +76,7 @@ namespace AlphDevCode.Managers
                 OnGetEnemy,
                 OnReleaseEnemy,
                 OnDestroyEnemy,
-                maxSize: 10);
+                maxSize: 20);
         }
 
         #region PoolMethods
@@ -77,6 +98,8 @@ namespace AlphDevCode.Managers
         {
             enemy.gameObject.SetActive(false);
             _activeEnemies.Remove(enemy);
+            if(--_enemiesLeft == 0)
+                OnWaveCompleted?.Invoke();
         }
 
         private void OnDestroyEnemy(Enemy enemy)

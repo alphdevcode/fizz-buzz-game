@@ -22,10 +22,6 @@ namespace AlphDevCode.Enemies
 
             if (enemyTypeData == enemy.EnemyType)
                 Die();
-            else
-            {
-                //TODO: Block attack animation?
-            }
         }
 
         public void Die()

@@ -12,12 +12,17 @@ namespace AlphDevCode.Enemies
 
         public void Stop()
         {
-            navMeshAgent.isStopped = true;
+            if(TryGetComponent<Rigidbody>(out var rb))
+                rb.isKinematic = true;
+            
+            if(navMeshAgent.enabled)
+                navMeshAgent.isStopped = true;
         }
         
         public void MoveToDestination(Vector3 point)
         {
-            navMeshAgent.SetDestination(point);
+            if(navMeshAgent.enabled)
+                navMeshAgent.SetDestination(point);
         }
 
         public void SetSpeed(float speed)
