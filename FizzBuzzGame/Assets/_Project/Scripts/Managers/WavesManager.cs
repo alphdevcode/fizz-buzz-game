@@ -52,5 +52,10 @@ namespace AlphDevCode.Managers
         {
             enemySpawner.OnWaveCompleted -= CompleteWave;
         }
+
+        public void ReleaseAllEnemies()
+        {
+            enemySpawner.ReleaseAllEnemies();
+        }
     }
 }

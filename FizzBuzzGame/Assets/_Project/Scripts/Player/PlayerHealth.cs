@@ -10,7 +10,6 @@ namespace AlphDevCode.Player
         private const int MaxHealth = 50;
 
         public event Action OnPlayerDie;
-        // public event Action OnHealthChange;
         public event Action OnDamageReceived;
         public int CurrentHealth { get; private set; }
 
@@ -23,7 +22,6 @@ namespace AlphDevCode.Player
         {
             CurrentHealth -= enemyTypeData.GetFizzBuzzLogicValue();
             OnDamageReceived?.Invoke();
-            // OnHealthChange?.Invoke();
 
             if (CurrentHealth <= 0)
                 Die();

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6688350523850406336
+--- !u!1 &9020489054957398823
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3428510415820670363}
-  - component: {fileID: 3597938030486251223}
+  - component: {fileID: 9020489054957398822}
+  - component: {fileID: 9020489054957398817}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: WavesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3428510415820670363
+--- !u!4 &9020489054957398822
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688350523850406336}
+  m_GameObject: {fileID: 9020489054957398823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,18 +32,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3597938030486251223
+--- !u!114 &9020489054957398817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688350523850406336}
+  m_GameObject: {fileID: 9020489054957398823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4d65d2304c307d4b96e090eda747fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 48614ea06ff84382849f8c11465b9b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesManager: {fileID: 0}
-  scoreManager: {fileID: 0}
-  player: {fileID: 0}
+  waves:
+  - {fileID: 11400000, guid: 83904b20b85a0554385f14fb176b1d83, type: 2}
+  - {fileID: 11400000, guid: 6f965b0058eec5f45913a806a6cc4c3a, type: 2}
+  - {fileID: 11400000, guid: 00242cacad51ca041b5110e38ea00e95, type: 2}
+  - {fileID: 11400000, guid: b40e44654494c7e469175d74f1026b47, type: 2}
+  - {fileID: 11400000, guid: 55c11451d477e3e4f921cb1d25ee65d5, type: 2}
+  - {fileID: 11400000, guid: 05258bc304dfd9f45967b03d6374f8c8, type: 2}
+  enemySpawner: {fileID: 0}

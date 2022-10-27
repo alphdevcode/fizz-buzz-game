@@ -11,13 +11,18 @@ namespace AlphDevCode.Managers
         private const int MaxMultiplier = 5;
         private PlayerHealth _playerHealth;
         private int _pointsSinceMultiplierUpdate;
-
-
+        
         public int Score { get; private set; }
         public int ScoreMultiplier { get; private set; } = 1;
 
         public event Action OnScoreChange;
         public event Action OnMultiplierChange;
+
+        public void ResetScore()
+        {
+            Score = 0;
+            OnScoreChange?.Invoke();
+        }
 
         private void Awake()
         {

@@ -7,10 +7,17 @@ namespace AlphDevCode.Player
 {
     public class PlayerInput : MonoBehaviour
     {
+        private Camera _mainCamera;
         private Rotation _rotation;
         private Weapon _weapon;
         private WeaponSwitcher _weaponSwitcher;
 
+        private bool _blockInput;
+
+        public void BlockInput(bool block)
+        {
+            _blockInput = block;
+        }
         private void Awake()
         {
             _rotation = GetComponent<Rotation>();
@@ -20,11 +27,14 @@ namespace AlphDevCode.Player
         private void Start()
         {
             _weaponSwitcher = _weapon.GetComponent<WeaponSwitcher>();
+            _mainCamera = Camera.main;
         }
 
         private void Update()
         {
-            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (_blockInput) return;
+            
+            var camRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(camRay, out var floorHit, 50f, LayerMask.GetMask("Ground")))
             {

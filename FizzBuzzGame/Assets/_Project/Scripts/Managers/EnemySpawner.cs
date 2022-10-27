@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using AlphDevCode.Enemies;
 using AlphDevCode.ScriptableObjects;
 using AlphDevCode.Tools;
@@ -62,11 +63,10 @@ namespace AlphDevCode.Managers
 
         public void ReleaseAllEnemies()
         {
-            foreach (var enemy in _activeEnemies)
+            foreach (var enemy in _activeEnemies.ToList())
             {
                 _enemyPool.Release(enemy);
             }
-            _activeEnemies.Clear();
         }
 
         private void Awake()
