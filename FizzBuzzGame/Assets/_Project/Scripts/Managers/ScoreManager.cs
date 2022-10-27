@@ -7,12 +7,17 @@ namespace AlphDevCode.Managers
 {
     public class ScoreManager : MonoBehaviour
     {
+        private const int BasePointsForMultiplierUpdate = 50;
+        private const int MaxMultiplier = 5;
         private PlayerHealth _playerHealth;
-        private int _scoreMultiplier;
+        private int _pointsSinceMultiplierUpdate;
+
 
         public int Score { get; private set; }
-        
+        public int ScoreMultiplier { get; private set; } = 1;
+
         public event Action OnScoreChange;
+        public event Action OnMultiplierChange;
 
         private void Awake()
         {
@@ -23,20 +28,32 @@ namespace AlphDevCode.Managers
         private void OnEnable()
         {
             EnemyHealth.OnEnemyDie += IncreaseScore;
-            _playerHealth.OnDamageReceived += DecreaseScore;
+            _playerHealth.OnDamageReceived += ResetMultiplier;
         }
 
         private void IncreaseScore(int value)
         {
-            Score += value;
+            Score += value * ScoreMultiplier;
+            _pointsSinceMultiplierUpdate += value;
             OnScoreChange?.Invoke();
+
+            if (ScoreMultiplier < MaxMultiplier 
+                && _pointsSinceMultiplierUpdate >= BasePointsForMultiplierUpdate * ScoreMultiplier)
+                IncreaseMultiplier();
         }
 
-        private void DecreaseScore(int value)
+        private void IncreaseMultiplier()
         {
-            Score -= value;
-            if (Score < 0) Score = 0;
-            OnScoreChange?.Invoke();
+            ScoreMultiplier++;
+            _pointsSinceMultiplierUpdate = 0;
+            OnMultiplierChange?.Invoke();
+        }
+
+        private void ResetMultiplier()
+        {
+            ScoreMultiplier = 1;
+            _pointsSinceMultiplierUpdate = 0;
+            OnMultiplierChange?.Invoke();
         }
     }
 }

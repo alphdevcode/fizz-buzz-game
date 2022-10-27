@@ -13,7 +13,7 @@ namespace AlphDevCode.UI
 
         private void OnEnable()
         {
-            playerHealth.OnHealthChange += UpdateUI;
+            playerHealth.OnDamageReceived += UpdateUI;
         }
 
         private void Start()
@@ -29,7 +29,7 @@ namespace AlphDevCode.UI
 
         private void OnDisable()
         {
-            playerHealth.OnHealthChange -= UpdateUI;
+            playerHealth.OnDamageReceived -= UpdateUI;
         }
     }
 }
