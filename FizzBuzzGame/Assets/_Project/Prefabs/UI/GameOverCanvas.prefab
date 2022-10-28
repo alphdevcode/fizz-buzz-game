@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5761195476589556490}
   - component: {fileID: 5761195476589556493}
   m_Layer: 5
-  m_Name: GameOverText
+  m_Name: MainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 5761195477061329055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 9.19, z: 0}
-  m_AnchorMin: {x: 0.04729167, y: 0.5}
-  m_AnchorMax: {x: 0.9222917, y: 0.9797038}
-  m_AnchoredPosition: {x: -1, y: 2}
-  m_SizeDelta: {x: 19.646484, y: 11.116394}
+  m_AnchorMin: {x: 0.04729167, y: 0.5231852}
+  m_AnchorMax: {x: 0.9207292, y: 0.9797038}
+  m_AnchoredPosition: {x: 0.5, y: 3.6279907}
+  m_SizeDelta: {x: 22.6465, y: 7.8603992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5761195476589556490
 CanvasRenderer:
@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5761195477061329055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 7018449661798356244}
   - component: {fileID: 7018449661798356243}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: CaptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <color=#BFBFBF>[R]</color> to Retry
+  m_text: Press <color=#B7B7B7>[R]</color> to Retry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34d442464d47cf2449bd5565a8533d80, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 835343ddc7e5d09418a17e15fab9dde2, type: 2}
@@ -294,8 +294,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293256677
-  m_fontColor: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
+    rgba: 4292269782
+  m_fontColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

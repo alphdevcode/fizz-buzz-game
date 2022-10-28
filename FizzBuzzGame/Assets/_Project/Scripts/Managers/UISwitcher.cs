@@ -1,31 +1,46 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using AlphDevCode.ScriptableObjects;
 using AlphDevCode.UI;
+using TMPro;
 using UnityEngine;
 
 namespace AlphDevCode.Managers
 {
     public class UISwitcher : MonoBehaviour
     {
-        [SerializeField] private GameManager gameManager;
-
         [SerializeField] private GameObject inGameUI;
-        [SerializeField] private GameObject gameOverUI;
+        
+        [SerializeField] private GameObject genericMenuUI;
+        [SerializeField] private TMP_Text genericMenuUIMainText;
+        [SerializeField] private TMP_Text genericMenuUICaption;
 
         private readonly List<GameObject> _uiScreenList = new();
 
         private GameObject _activeUI;
 
-        private void ActivateInGameUI()
+        public void ActivateInGameUI()
         {
             ChangeUI(UIScreen.InGame);
         }
 
-        private void ActivateGameOverUI()
+        public void ActivateGenericMenuUI(GameStates state)
         {
-            ChangeUI(UIScreen.GameOver);
+            switch (state)
+            {
+                case GameStates.StartMenu:
+                    genericMenuUIMainText.text = "Fizz Buzz Shadowland";
+                    genericMenuUICaption.text = "Press any key to start";
+                    break;
+                case GameStates.GameOver:
+                    genericMenuUIMainText.text = "Game Over";
+                    genericMenuUICaption.text = "Press <color=#B7B7B7>[R]</color> to Retry";
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, 
+                        "State does not have a generic menu UI");
+            }
+
+            ChangeUI(UIScreen.GenericMenu);
         }
 
         private void ChangeUI(UIScreen uiToActivate)
@@ -43,20 +58,8 @@ namespace AlphDevCode.Managers
 
         private void PopulateUIList()
         {
-            _uiScreenList.Insert((int)UIScreen.InGame, inGameUI);
-            _uiScreenList.Insert((int)UIScreen.GameOver, gameOverUI);
-        }
-
-        private void OnEnable()
-        {
-            gameManager.OnStartGame += ActivateInGameUI;
-            gameManager.OnGameOver += ActivateGameOverUI;
-        }
-
-        private void OnDisable()
-        {
-            gameManager.OnStartGame -= ActivateInGameUI;
-            gameManager.OnGameOver -= ActivateGameOverUI;
+            _uiScreenList.Add(genericMenuUI);
+            _uiScreenList.Add(inGameUI);
         }
     }
 }

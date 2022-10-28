@@ -9,15 +9,15 @@ namespace AlphDevCode.Managers
         [SerializeField] private WavesManager wavesManager;
         [SerializeField] private ScoreManager scoreManager;
         [SerializeField] private PlayerHealth playerHealth;
-
-        public event Action OnGameOver;
-        public event Action OnStartGame;
-
+        [SerializeField] private PlayerInput playerInput;
+        [SerializeField] private UISwitcher uiSwitcher;
+        
+        public GameStates CurrentState { get; private set; }
+        
         public void RetryGame()
         {
             StartGame();
             playerHealth.Revive();
-            playerHealth.GetComponent<PlayerInput>().BlockInput(false);
         }
 
         private void OnEnable()
@@ -27,26 +27,30 @@ namespace AlphDevCode.Managers
 
         private void Start()
         {
-            StartGame();
+            uiSwitcher.ActivateGenericMenuUI(CurrentState = GameStates.StartMenu);
+            playerInput.BlockInput(true);
         }
 
         private void GameOver()
         {
-            OnGameOver?.Invoke();
+            uiSwitcher.ActivateGenericMenuUI(CurrentState = GameStates.GameOver);
+            playerInput.BlockInput(true);
             wavesManager.StopWaves();
-            playerHealth.GetComponent<PlayerInput>().BlockInput(true);
             AudioSystem.instance.StopSound("BattleTheme");
             AudioSystem.instance.PlaySound("GameOverMusic");
         }
 
-        private void StartGame()
+        public void StartGame()
         {
-            OnStartGame?.Invoke();
+            playerInput.BlockInput(false);
+
+            uiSwitcher.ActivateInGameUI();
             scoreManager.ResetScore();
             wavesManager.ReleaseAllEnemies();
             StartCoroutine(wavesManager.StartWave(0));
             AudioSystem.instance.StopSound("GameOverMusic");
             AudioSystem.instance.PlaySound("BattleTheme");
+            CurrentState = GameStates.Battle;
         }
         
         private void OnDisable()

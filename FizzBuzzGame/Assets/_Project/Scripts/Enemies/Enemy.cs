@@ -59,6 +59,7 @@ namespace AlphDevCode.Enemies
 
         private void InitializeEnemyData(int fizzBuzzNumber)
         {
+            movement.transform.localScale = Vector3.one * enemyType.scaleMultiplier;
             movement.SetSpeed(this.enemyType.movementSpeed);
             skinnedMeshRenderer.material.SetColor(ShaderMaterialHelper.TintColorID, this.enemyType.color);
             if (fizzBuzzNumberText != null)

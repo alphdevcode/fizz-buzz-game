@@ -7,8 +7,9 @@ namespace AlphDevCode.ScriptableObjects
     public class EnemyTypeScriptableObject : ScriptableObject
     {
         public FizzBuzzLogicType enemyType = FizzBuzzLogicType.Dumb;
-        public float movementSpeed = 1f;
         public Color color;
+        public float movementSpeed = 1f;
+        public float scaleMultiplier = 1f;
 
         public int GetFizzBuzzLogicValue()
         {

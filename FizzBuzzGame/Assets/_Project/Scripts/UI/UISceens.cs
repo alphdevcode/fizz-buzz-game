@@ -2,7 +2,7 @@
 {
     public enum UIScreen
     {
-        InGame = 0,
-        GameOver = 1
+        GenericMenu = 0,
+        InGame = 1,
     }
 }

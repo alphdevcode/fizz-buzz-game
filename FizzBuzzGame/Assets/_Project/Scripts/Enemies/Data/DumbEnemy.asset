@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DumbEnemy
   m_EditorClassIdentifier: 
   enemyType: 0
-  movementSpeed: 2
   color: {r: 0.20000002, g: 0.14901961, b: 0.1137255, a: 0}
+  movementSpeed: 1.7
+  scaleMultiplier: 1.2

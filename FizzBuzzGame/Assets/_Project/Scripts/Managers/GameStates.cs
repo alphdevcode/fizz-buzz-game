@@ -2,6 +2,8 @@
 {
     public enum GameStates
     {
-        
+        StartMenu,
+        Battle,
+        GameOver
     }
 }

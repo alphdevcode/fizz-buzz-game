@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: FizzEnemy
   m_EditorClassIdentifier: 
   enemyType: 1
-  movementSpeed: 3
   color: {r: 0.9607844, g: 0.9686275, b: 0.28627452, a: 0}
+  movementSpeed: 3
+  scaleMultiplier: 0.8

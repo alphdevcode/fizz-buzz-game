@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BuzzEnemy
   m_EditorClassIdentifier: 
   enemyType: 2
-  movementSpeed: 1.5
   color: {r: 0.9568628, g: 0.6156863, b: 0.21568629, a: 0}
+  movementSpeed: 1.5
+  scaleMultiplier: 1.4
