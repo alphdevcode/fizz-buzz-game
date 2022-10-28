@@ -36,7 +36,7 @@ namespace AlphDevCode.Enemies
             if(enemyAnimator) enemyAnimator.Die();
             OnDie?.Invoke(enemy.EnemyType.GetFizzBuzzLogicValue());
             ActivateEnemy(false);
-
+    
             if (!enemyNavMeshAgent) return;
             var sinker = new Sinker(enemyNavMeshAgent.transform);
             StartCoroutine(sinker.SinkDown(SinkSpeed, 3f, 1f,

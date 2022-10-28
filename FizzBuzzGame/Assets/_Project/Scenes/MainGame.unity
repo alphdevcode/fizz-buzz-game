@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -98,7 +98,8 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: b00b3b3da7471bb47854c14e9d14bd68,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -815,6 +816,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.032
       objectReference: {fileID: 0}
+    - target: {fileID: 4227469456971097238, guid: 303ee11d7ba361a4b8d13df72afb6107,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227469456971097238, guid: 303ee11d7ba361a4b8d13df72afb6107,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227469456971097238, guid: 303ee11d7ba361a4b8d13df72afb6107,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7851383703169372892, guid: 303ee11d7ba361a4b8d13df72afb6107,
         type: 3}
       propertyPath: m_Name
@@ -1175,6 +1191,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
         type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 915974d7df5335243b9c6dd6832de163, type: 3}
+    - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
+        type: 3}
+      propertyPath: sounds.Array.data[7].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
+        type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: StartMenuMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
+        type: 3}
       propertyPath: sounds.Array.data[1].pitch
       value: 0.1
       objectReference: {fileID: 0}
@@ -1191,6 +1222,11 @@ PrefabInstance:
     - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
         type: 3}
       propertyPath: sounds.Array.data[6].pitch
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
+        type: 3}
+      propertyPath: sounds.Array.data[7].pitch
       value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
@@ -1226,6 +1262,11 @@ PrefabInstance:
     - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
         type: 3}
       propertyPath: sounds.Array.data[6].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218735018426035740, guid: 481cc81fca12cb1409c2c938a2db5b3c,
+        type: 3}
+      propertyPath: sounds.Array.data[7].volume
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2218735018426035741, guid: 481cc81fca12cb1409c2c938a2db5b3c,
@@ -1783,7 +1824,7 @@ PrefabInstance:
     - target: {fileID: 5951120681033952503, guid: 2d72f8097dbd72f4aa4169760c6dcd7b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.2603455
+      value: -1.260315
       objectReference: {fileID: 0}
     - target: {fileID: 5951120681496116748, guid: 2d72f8097dbd72f4aa4169760c6dcd7b,
         type: 3}

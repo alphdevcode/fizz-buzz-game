@@ -1,6 +1,4 @@
-﻿using System;
-using PlasticGui.WorkspaceWindow.QueryViews.Changesets;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace AlphDevCode.Enemies

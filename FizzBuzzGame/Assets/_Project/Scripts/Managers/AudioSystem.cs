@@ -38,7 +38,7 @@ namespace AlphDevCode.Managers
             Debug.LogWarning("Sound: " + soundName + " not found!");
             return null;
         }
-
+        
         public void PlaySoundAtPoint(string soundName, Vector3 position)
         {
             var s = FindSound(soundName);

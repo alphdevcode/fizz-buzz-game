@@ -29,6 +29,7 @@ namespace AlphDevCode.Managers
         {
             uiSwitcher.ActivateGenericMenuUI(CurrentState = GameStates.StartMenu);
             playerInput.BlockInput(true);
+            AudioSystem.instance.PlaySound("BattleTheme");
         }
 
         private void GameOver()
