@@ -16,7 +16,7 @@ namespace AlphDevCode.UI
         [SerializeField] private Image fizzBuzzWeaponImage;
 
         private const float SelectedAlpha = 1f;
-        private const float DeselectedAlpha = .7f;
+        private const float DeselectedAlpha = .3f;
 
         private void OnEnable()
         {
