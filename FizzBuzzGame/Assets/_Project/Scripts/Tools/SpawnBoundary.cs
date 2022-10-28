@@ -6,7 +6,7 @@ namespace AlphDevCode.Tools
     {
         public const float ZScreenEdge = 10f;
         public const float XScreenEdge = 17f;
-        private const float SafeDistance = 5f;
+        private const float SafeDistance = 7f;
         private const float OffScreenDistance = 5f;
 
         public Vector2 GetRandomSpawnPoint()

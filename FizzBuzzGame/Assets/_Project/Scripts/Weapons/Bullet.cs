@@ -1,4 +1,5 @@
-﻿using AlphDevCode.Interfaces;
+﻿using AlphDevCode.Enemies;
+using AlphDevCode.Interfaces;
 using AlphDevCode.ScriptableObjects;
 using AlphDevCode.Tools;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace AlphDevCode.Weapons
         private float _speed = 1;
         private Vector3 _direction = Vector3.forward;
         
-        private readonly Movement _movement = new Movement();
+        private readonly Movement _movement = new ();
         private IObjectPool<Bullet> _bulletPool;
         
         public Vector3 Direction { set => _direction = value; }
@@ -26,16 +27,7 @@ namespace AlphDevCode.Weapons
         public void SetData(WeaponScriptableObject weaponData)
         {
             _targetEnemyType = weaponData.targetEnemyType;
-            SetColor(weaponData.targetEnemyType.color);
             _speed = weaponData.bulletSpeed;
-        }
-
-        private void SetColor(Color color)
-        {
-            if(TryGetComponent<MeshRenderer>(out var meshRenderer))
-            {
-                meshRenderer.material.color = color;
-            }
         }
 
         private void Update()
@@ -49,13 +41,14 @@ namespace AlphDevCode.Weapons
                 _bulletPool.Release(this);
         }
 
-        private void OnTriggerEnter(Collider hitCollider)
+        private void OnTriggerExit(Collider hitCollider)
         {
             if (hitCollider.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(_targetEnemyType);
             }
-            _bulletPool.Release(this);
+            if(!hitCollider.TryGetComponent(out EnemyAttack _))
+                _bulletPool.Release(this);
         }
     }
 }

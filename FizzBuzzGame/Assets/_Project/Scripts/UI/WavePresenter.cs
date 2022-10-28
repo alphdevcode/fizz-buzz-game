@@ -25,6 +25,7 @@ namespace AlphDevCode.UI
         {
             waveText.text = isLastWave ? "Infinite Wave" : $"Wave {waveNumber}";
             StartCoroutine(ShowTextForSeconds(1.5f));
+            AudioSystem.instance.PlaySound("WavesSound");
         }
 
         private IEnumerator ShowTextForSeconds(float seconds)

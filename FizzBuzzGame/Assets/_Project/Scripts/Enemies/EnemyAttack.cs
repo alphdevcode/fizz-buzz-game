@@ -1,4 +1,6 @@
-﻿using AlphDevCode.Player;
+﻿using System;
+using AlphDevCode.Interfaces;
+using AlphDevCode.Managers;
 using UnityEngine;
 
 namespace AlphDevCode.Enemies
@@ -7,14 +9,21 @@ namespace AlphDevCode.Enemies
     {
         [SerializeField] private Enemy enemy;
 
+        public event Action OnEnemyNearPlayer;
+
         private void OnTriggerEnter(Collider hitCollider)
         {
-            if (hitCollider.TryGetComponent(out PlayerHealth playerHealth))
+            if (hitCollider.gameObject.CompareTag("Player"))
             {
-                playerHealth.TakeDamage(enemy.EnemyType);
-                enemy.ReleaseFromPool();
+                OnEnemyNearPlayer?.Invoke();
             }
         }
-        
+
+        public void Attack(IDamageable health)
+        {
+            health.TakeDamage(enemy.EnemyType);
+            enemy.ReleaseFromPool();
+            AudioSystem.instance.PlaySoundAtPoint("SlimeAttack", transform.position);
+        }
     }
 }

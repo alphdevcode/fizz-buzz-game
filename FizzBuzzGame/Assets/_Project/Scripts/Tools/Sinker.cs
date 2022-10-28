@@ -13,8 +13,9 @@ namespace AlphDevCode.Tools
             _transform = transform;
         }
 
-        public IEnumerator SinkDown(float sinkSpeed, float distanceToSink, Action callback = null)
+        public IEnumerator SinkDown(float sinkSpeed, float distanceToSink, float secondsToWait = 0f, Action callback = null)
         {
+            yield return new WaitForSeconds(secondsToWait);
             var initialPosition = _transform.position.y;
             var movement = new Movement();
             

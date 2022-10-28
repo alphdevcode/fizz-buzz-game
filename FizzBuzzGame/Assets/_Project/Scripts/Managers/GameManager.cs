@@ -8,20 +8,21 @@ namespace AlphDevCode.Managers
     {
         [SerializeField] private WavesManager wavesManager;
         [SerializeField] private ScoreManager scoreManager;
-        [SerializeField] private PlayerHealth player;
+        [SerializeField] private PlayerHealth playerHealth;
 
         public event Action OnGameOver;
         public event Action OnStartGame;
 
         public void RetryGame()
         {
-            StartGame();        
-            player.GetComponent<PlayerInput>().enabled = true;
+            StartGame();
+            playerHealth.Revive();
+            playerHealth.GetComponent<PlayerInput>().BlockInput(false);
         }
 
         private void OnEnable()
         {
-            player.OnPlayerDie += GameOver;
+            playerHealth.OnDie += GameOver;
         }
 
         private void Start()
@@ -33,7 +34,9 @@ namespace AlphDevCode.Managers
         {
             OnGameOver?.Invoke();
             wavesManager.StopWaves();
-            player.GetComponent<PlayerInput>().enabled = false;
+            playerHealth.GetComponent<PlayerInput>().BlockInput(true);
+            AudioSystem.instance.StopSound("BattleTheme");
+            AudioSystem.instance.PlaySound("GameOverMusic");
         }
 
         private void StartGame()
@@ -42,11 +45,13 @@ namespace AlphDevCode.Managers
             scoreManager.ResetScore();
             wavesManager.ReleaseAllEnemies();
             StartCoroutine(wavesManager.StartWave(0));
+            AudioSystem.instance.StopSound("GameOverMusic");
+            AudioSystem.instance.PlaySound("BattleTheme");
         }
         
         private void OnDisable()
         {
-            player.OnPlayerDie += GameOver;
+            playerHealth.OnDie += GameOver;
         }
     }
 }

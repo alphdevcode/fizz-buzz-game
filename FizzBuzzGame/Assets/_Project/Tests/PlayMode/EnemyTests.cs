@@ -3,6 +3,7 @@ using AlphDevCode.Enemies;
 using AlphDevCode.ScriptableObjects;
 using AlphDevCode.Tools;
 using NUnit.Framework;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -11,14 +12,14 @@ namespace Tests
 {
     public class EnemyTests
     {
-        private const string EnemyPrefabPath = "Assets/_Project/Prefabs/Enemy.prefab";
         private const string EnemyTypeSelectorPath = "Assets/_Project/Scripts/Enemies/Data/EnemyTypeSelector.asset";
-
-        private readonly Enemy _enemyPrefab = AssetDatabase.LoadAssetAtPath<Enemy>(EnemyPrefabPath);
+        private const string FizzBuzzNumberTextPath = "Assets/_Project/Prefabs/Units/FizzBuzzNumber.prefab";
 
         private readonly EnemyTypeSelectorScriptableObject _enemyTypeSelector =
             AssetDatabase.LoadAssetAtPath<EnemyTypeSelectorScriptableObject>(EnemyTypeSelectorPath);
-        
+
+        private readonly TMP_Text _fizzBuzzNumberText = AssetDatabase.LoadAssetAtPath<TMP_Text>(FizzBuzzNumberTextPath);
+
         private static FizzBuzzLogicType[] _fizzBuzzLogicTypes =
         {
             FizzBuzzLogicType.Dumb,
@@ -27,6 +28,17 @@ namespace Tests
             FizzBuzzLogicType.FizzBuzz
         };
         
+        private EnemyHealth _enemyHealth;
+
+        [OneTimeSetUp]
+        public void SetUpEnemy()
+        {
+            var enemy = new GameObject().AddComponent<Enemy>();
+            _enemyHealth = enemy.gameObject.AddComponent<EnemyHealth>();
+            _enemyHealth.Enemy = enemy;
+            enemy.FizzBuzzNumberText = _fizzBuzzNumberText;
+        }
+
         [UnityTest]
         public IEnumerator Given_TakeDamageSameType_Then_Die(
             [ValueSource(nameof(_fizzBuzzLogicTypes))]
@@ -34,16 +46,13 @@ namespace Tests
         {
             var enemyData = _enemyTypeSelector.GetEnemyData(fizzBuzzLogicType);
 
-            var enemy = GameObject.Instantiate(_enemyPrefab);
-
-
-            enemy.SetEnemyTypeData(enemyData);
-
-            var enemyHealth = enemy.GetComponentInChildren<EnemyHealth>();
+            var enemyHealth = _enemyHealth;
+            
+            enemyHealth.GetComponent<Enemy>().EnemyType = enemyData;
             enemyHealth.TakeDamage(enemyData);
 
             yield return null;
-            Assert.IsFalse(enemyHealth.GetComponent<BoxCollider>().enabled);
+            Assert.IsTrue(enemyHealth.IsDead);
         }
 
         [UnityTest]
@@ -51,22 +60,19 @@ namespace Tests
             [NUnit.Framework.Range(0, 3)] int fizzBuzzTypeIndex)
         {
             var enemyData = _enemyTypeSelector.GetEnemyData(_fizzBuzzLogicTypes[fizzBuzzTypeIndex]);
-
-            var enemy = GameObject.Instantiate(_enemyPrefab);
-            yield return null;
+            var enemyHealth = _enemyHealth;
+            enemyHealth.GetComponent<Enemy>().EnemyType = enemyData;
             
-            enemy.SetEnemyTypeData(enemyData);
+            yield return null;
 
             for (var i = 0; i < _fizzBuzzLogicTypes.Length; i++)
             {
                 if (i == fizzBuzzTypeIndex) continue;
-                
+
                 var bulletEnemyData = _enemyTypeSelector.GetEnemyData(_fizzBuzzLogicTypes[i]);
-                var enemyHealth = enemy.GetComponentInChildren<EnemyHealth>();
                 enemyHealth.TakeDamage(bulletEnemyData);
-                
-                var isNotDead = enemyHealth.GetComponent<BoxCollider>().enabled;
-                Assert.IsTrue(isNotDead);
+
+                Assert.IsFalse(enemyHealth.IsDead);
             }
         }
     }

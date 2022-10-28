@@ -23,7 +23,7 @@ namespace Tests
         }
         
         [Test]
-        public void Given_PointsOnLeftOrRight_Then_PointsOutsideSafeArea([Values(-6,6)] float x, [NUnit.Framework.Range(-4,4)] float y)
+        public void Given_PointsOnLeftOrRight_Then_PointsOutsideSafeArea([Values(-8,8)] float x, [NUnit.Framework.Range(-4,4)] float y)
         {
             var spawnBoundary = new SpawnBoundary();
 

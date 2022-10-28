@@ -32,7 +32,7 @@ namespace AlphDevCode.Managers
 
         private void OnEnable()
         {
-            EnemyHealth.OnEnemyDie += IncreaseScore;
+            EnemyHealth.OnDie += IncreaseScore;
             _playerHealth.OnDamageReceived += ResetMultiplier;
         }
 
@@ -52,6 +52,7 @@ namespace AlphDevCode.Managers
             ScoreMultiplier++;
             _pointsSinceMultiplierUpdate = 0;
             OnMultiplierChange?.Invoke();
+            AudioSystem.instance.PlaySound("ScoreMultiplierUp");
         }
 
         private void ResetMultiplier()

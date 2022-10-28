@@ -9,7 +9,7 @@ namespace AlphDevCode.UI
 {
     public class WeaponSwitcherPresenter :MonoBehaviour
     {
-        [SerializeField] private Weapon weapon;
+        [SerializeField] private RangeAttack rangeAttack;
         [SerializeField] private Image dumbWeaponImage;
         [SerializeField] private Image fizzWeaponImage;
         [SerializeField] private Image buzzWeaponImage;
@@ -20,12 +20,12 @@ namespace AlphDevCode.UI
 
         private void OnEnable()
         {
-            weapon.OnWeaponChange += UpdateUI;
+            rangeAttack.OnWeaponChange += UpdateUI;
         }
 
         private void Start()
         {
-            UpdateUI(weapon.WeaponType);
+            UpdateUI(rangeAttack.WeaponType);
         }
 
         private void UpdateUI(WeaponScriptableObject weaponType)
@@ -55,7 +55,7 @@ namespace AlphDevCode.UI
 
         private void OnDisable()
         {
-            weapon.OnWeaponChange -= UpdateUI;
+            rangeAttack.OnWeaponChange -= UpdateUI;
         }
     }
 }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 3
   movementSpeed: 1
-  color: {r: 0.7830189, g: 0.15881987, b: 0.15881987, a: 0}
+  color: {r: 0.8431373, g: 0.14901961, b: 0.21960786, a: 0}

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3501298035714380145}
   - component: {fileID: 3501298035714380151}
-  - component: {fileID: 3501298035714380144}
   - component: {fileID: 3501298035714380150}
+  - component: {fileID: 3501298035714380144}
   m_Layer: 5
   m_Name: WaveText
   m_TagString: Untagged
@@ -47,6 +47,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3501298035714380146}
   m_CullTransparentMesh: 1
+--- !u!114 &3501298035714380150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501298035714380146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02df3765be9429b8c4e105e1714a39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wavesManager: {fileID: 0}
+  waveText: {fileID: 3501298035714380144}
 --- !u!114 &3501298035714380144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,17 +150,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3501298035714380150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3501298035714380146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02df3765be9429b8c4e105e1714a39b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wavesManager: {fileID: 0}
-  waveText: {fileID: 3501298035714380144}

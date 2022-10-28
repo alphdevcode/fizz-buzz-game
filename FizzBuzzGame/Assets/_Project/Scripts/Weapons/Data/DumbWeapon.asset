@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetEnemyType: {fileID: 11400000, guid: 34d438021bb1f8d42b79519b13f604d6, type: 2}
   shootingInterval: 0.2
-  bulletSpeed: 30
+  bulletSpeed: 20

@@ -21,6 +21,8 @@ namespace AlphDevCode.Enemies
         
         public void MoveToDestination(Vector3 point)
         {
+            transform.LookAt(point);
+
             if(navMeshAgent.enabled)
                 navMeshAgent.SetDestination(point);
         }

@@ -11,14 +11,21 @@ namespace AlphDevCode.Enemies
     public class EnemyHealth : MonoBehaviour, IDamageable, IDieable
     {
         [SerializeField] private Enemy enemy;
-        private const float SinkSpeed = 2.5f;
-        private bool _isDead = false;
+        [SerializeField] private EnemyAnimation enemyAnimator;
+        [SerializeField] private Rigidbody enemyRigidbody;
+        [SerializeField] private NavMeshAgent enemyNavMeshAgent;
+        private const float SinkSpeed = 1.2f;
+        public bool IsDead { get; private set; }
+        public Enemy Enemy
+        {
+            set => enemy = value;
+        }
 
-        public static event Action<int> OnEnemyDie;
+        public static event Action<int> OnDie;
 
         public void TakeDamage(EnemyTypeScriptableObject enemyTypeData)
         {
-            if (_isDead) return;
+            if (IsDead) return;
 
             if (enemyTypeData == enemy.EnemyType)
                 Die();
@@ -26,20 +33,23 @@ namespace AlphDevCode.Enemies
 
         public void Die()
         {
-            OnEnemyDie?.Invoke(enemy.EnemyType.GetFizzBuzzLogicValue());
+            if(enemyAnimator) enemyAnimator.Die();
+            OnDie?.Invoke(enemy.EnemyType.GetFizzBuzzLogicValue());
             ActivateEnemy(false);
-            
-            var sinker = new Sinker(transform);
-            StartCoroutine(sinker.SinkDown(SinkSpeed, 5f, 
+
+            if (!enemyNavMeshAgent) return;
+            var sinker = new Sinker(enemyNavMeshAgent.transform);
+            StartCoroutine(sinker.SinkDown(SinkSpeed, 3f, 1f,
                 () => { enemy.ReleaseFromPool(); }));
         }
 
         private void ActivateEnemy(bool active)
         {
-            _isDead = !active;
-            if (TryGetComponent(out Rigidbody rb)) rb.isKinematic = !active;
-            if(TryGetComponent(out NavMeshAgent navMeshAgent)) navMeshAgent.enabled = active;
+            IsDead = !active;
+            if (enemyRigidbody) enemyRigidbody.isKinematic = !active;
+            if (enemyNavMeshAgent) enemyNavMeshAgent.enabled = active;
             GetComponent<BoxCollider>().enabled = active;
+            if (enemy) enemy.FizzBuzzNumberText.enabled = active;
         }
 
         private void OnEnable()

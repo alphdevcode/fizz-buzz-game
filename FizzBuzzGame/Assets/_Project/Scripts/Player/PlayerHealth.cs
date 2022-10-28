@@ -9,9 +9,16 @@ namespace AlphDevCode.Player
     {
         private const int MaxHealth = 50;
 
-        public event Action OnPlayerDie;
         public event Action OnDamageReceived;
+        public event Action OnDie;
+        public event Action OnRevive;
         public int CurrentHealth { get; private set; }
+
+        public void Revive()
+        {
+            CurrentHealth = MaxHealth;
+            OnRevive?.Invoke();
+        }
 
         private void Awake()
         {
@@ -29,9 +36,7 @@ namespace AlphDevCode.Player
 
         public void Die()
         {
-            OnPlayerDie?.Invoke();
+            OnDie?.Invoke();
         }
-        
-        
     }
 }

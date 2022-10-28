@@ -5,31 +5,31 @@ using UnityEngine;
 
 namespace AlphDevCode.Weapons
 {
-    [RequireComponent(typeof(Weapon))]
+    [RequireComponent(typeof(RangeAttack))]
     public class WeaponSwitcher : MonoBehaviour
     {
         [SerializeField] private WeaponSelectorScriptableObject weaponSelector;
-        private Weapon _weapon;
+        private RangeAttack _rangeAttack;
         
         private void Start()
         {
-            _weapon = GetComponent<Weapon>();
+            _rangeAttack = GetComponent<RangeAttack>();
         }
 
         public void NextWeapon()
         {
-            _weapon.SetData(weaponSelector.GetNextWeaponData());
+            _rangeAttack.SetData(weaponSelector.GetNextWeaponData());
         }
         
         public void PreviousWeapon()
         {
-            _weapon.SetData(weaponSelector.GetPreviousWeaponData());
+            _rangeAttack.SetData(weaponSelector.GetPreviousWeaponData());
         }
 
 
         public void ChangeWeapon(FizzBuzzLogicType weaponType)
         {
-            _weapon.SetData(weaponSelector.GetWeaponData(weaponType, true));
+            _rangeAttack.SetData(weaponSelector.GetWeaponData(weaponType, true));
         }
 
     }
